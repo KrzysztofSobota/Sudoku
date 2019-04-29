@@ -1,0 +1,7 @@
+Version 1 (29.04.2019)
+
+To change/put:
+- make website with RWD rules,
+- website colors,
+- repair buttons START/RESET working,
+- make timers inside tables (currently time and record time)
