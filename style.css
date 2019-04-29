@@ -1,0 +1,164 @@
+html, body, .grid-container { 
+  height: 100%; 
+  margin: 0; 
+  background-color: rgba(89, 142, 142, 0.35);
+  font-family: Verdana;
+  font-size: 1em;
+}
+
+.grid-container * {
+ position: relative;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 1.2fr;
+  grid-template-rows: 2fr 4fr 0.5fr;
+  grid-column-gap: 0.5em;
+  grid-template-areas: "Description Description Description" "Options Sudoku Record" "Footer Footer Footer";
+}
+
+.Description { grid-area: Description; height: auto;}
+
+h2 {
+  margin: 0.5em 0;
+  text-align: center;
+}
+
+.Options, .Record {
+  display: grid;
+  min-width: 100px;
+  min-height: 450px;
+  height: auto;
+  grid-template-columns: 1fr;
+}
+
+.Options {
+  grid-template-rows: 0.4fr 1fr 2fr 1fr;
+  grid-template-areas: "h3" "rowOption" "rowOption" "rowOption";
+  grid-area: Options;
+}
+
+h3 {
+  display: block;
+  margin: 0;
+  text-align: center;
+  background-color: burlywood;
+}
+
+button {
+  width: 4em;
+  height: 2em;
+  margin: 0 5px;
+  font-size: 20px;
+}
+
+section, .rowOption, .rowRecord {
+  margin: 10px 5px;
+}
+
+input {
+  display: inline-block;
+  float: left;
+}
+
+ul {
+  margin: 6px 0;
+}
+
+li {
+  line-height: 1.25em;
+  list-style-type: square;
+}
+
+
+.Sudoku {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  min-width: 400px;
+}
+
+.gamespace {
+  display: flex;
+  height: 360px;
+  width: 360px;  
+  flex-flow: row wrap;
+  justify-content: center;
+  border: 2px solid black;
+}
+
+.squares {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(237, 198, 123, 0.55);
+}
+
+p {
+  display: inline-block;
+  padding: 8px 0;
+  margin: 0;
+  height: auto;
+  width: 100%;
+  line-height: 0.5em;
+  text-align: center;
+}
+
+.Record {
+  grid-template-rows: 1fr 2fr;
+  grid-row-gap: 5px;
+  grid-template-areas: "rowRecord" "rowRecord";
+  grid-area: Record;
+}
+
+.watch, .ranking {
+  width: auto;
+  height: auto;
+  margin-top: 5px;
+  border: 1px solid black;
+}
+
+.watch {
+  display: grid;
+  min-height: 100px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 1fr;
+  grid-template-areas: "yourTime" "newRecord";
+  grid-area: ranking;
+}
+
+.ranking {
+  display: grid;
+  min-height: 200px;
+  font: 14px Helvetica;
+  grid-template-columns: 0.2fr 1fr;
+  grid-template-rows: repeat (10, 1fr);
+  grid-template-areas: "no times" "no times" "no times" "no times" "no times" "no times" "no times" "no times" "no times" "no times";
+  grid-area: ranking;
+}
+
+.no {  
+  text-align: right;
+  border-right: 1px solid black; 
+}
+
+.times, .no, .yourTime {
+  border-bottom: 1px solid black;
+}
+
+.times:last-of-type, .no:nth-last-child(2) {  
+  border-bottom: none;
+}
+
+.Options, .Record, .rowOption, .rowRecord {
+  background-color: darkgray;
+}
+
+.Footer { 
+  grid-area: Footer; 
+  min-height: 35px;
+  background-color: bisque;
+}
