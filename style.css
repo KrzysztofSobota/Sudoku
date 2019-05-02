@@ -16,11 +16,12 @@ html, body {
 
 h1, h2, h3 { 
   width: 100%;
+  margin: 5px 0;
 }
 
-h1 { font-size: 2em; margin: 5px 0 15px 0;}
-h2 { font-size: 1.5em; margin: 5px 0 12px 0;}
-h3 { font-size: 1.17em; margin: 5px 0 10px 0;}
+h1 {font-size: 2em;}
+h2 {font-size: 1.5em;}
+h3 {font-size: 1.17em;}
 
 a {
   text-decoration: none;
@@ -84,38 +85,54 @@ main {
   margin-bottom: 60px;
 }
 
-.description {
+article, .description {
   display: flex;
+  width: 100%;
   flex-flow: row wrap;
 }
 
-sidebar, .Record {
-  display: flex;
-  flex-flow: row wrap;
-  flex-basis: 200px;
-  min-height: 450px;
-  height: auto;
+ul {
+  width: 100%;
+  padding: 0 5px 0 2.5em;
+  margin-top: 0;
 }
 
-sidebar {
+li {
+  margin: 5px 0;
+  list-style-type: disc;
+}
+
+.panels, .Sudoku {
   display: flex;
   flex-flow: row wrap;
-  flex-basis: 200px;
-  justify-content: center;
-  align-content: center;
 }
 
 h3 {
   display: flex;
+  height: 30px;
   justify-content: center;
-  
+  align-items: center;
   background-color: #B4CC68;
 }
 
+.panels {
+  flex-basis: 200px;
+  height: auto;
+  padding: 0 8px;
+  background-color: #BFB575;
+}
+
+.buttons {
+  width: 100%;
+  height: 50px;
+}
+
 .btn {
-  width: 45%;
-  height: 2em;
-  font-size: 24px;
+  width: 90px;
+  height: 100%;
+  padding: 0;
+  border: 2px solid #729d31;
+  font-size: 28px;
   background-color: #DDDBD5;
 }
 
@@ -127,32 +144,23 @@ h3 {
   color: #801721;
 }
 
-section, .rowOption, .rowRecord {
-  margin: 10px 5px;
+.click {
+  display: flex;
+  height: auto;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  align-content: space-between;
 }
 
 input[type='radio'] {
-  display: inline-block;
-  float: left;
+  flex-basis: 9%;
 }
-
-ul {
-  margin: 6px 0;
-}
-
-li {
-  line-height: 1.25em;
-  list-style-type: square;
-}
-
 
 .Sudoku {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-  height: 400px;
-  width: 400px;
+  height: 364px;
+  width: 364px;
+  align-self: center;
+  margin: 0 10px;
 }
 
 .gamespace {
@@ -160,47 +168,35 @@ li {
   height: 100%;
   width: 100%;
   flex-flow: row wrap;
-  justify-content: space-between;
   border: 2px solid black;
 }
 
 .squares {
   display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   height: auto;
   width: 40px;
   background-color: rgba(237, 198, 123, 0.55);
 }
 
-
-.Record {
-  
-}
-
-.watch, .ranking {
-  width: auto;
-  height: auto;
-  margin-top: 5px;
-  border: 1px solid black;
-}
-
-.watch {
-  
-}
-
-.ranking {
-  
-}
-
-sidebar, .Record, .rowOption, .rowRecord {
-  background-color: #BFB575;
+.squares > span {
+  display: flex;
+  align-self: center;
+  font-size: 18px;
 }
 
 table {
-  width: 100%;
-  margin-top: 15px;
+  width: 95%;
+  margin: 0 auto;
   border-collapse: collapse;
   border-spacing: 0;
   font-size: 1.4em;
+}
+
+th {
+  font-size: 18px;
+  height: 24px;
 }
 
 td {
@@ -214,18 +210,28 @@ td:first-of-type {
   text-align: right;
 }
 
+.timer {
+  margin-top: 5px;  
+  height: 120px;  
+  border: 1px solid black;
+}
+
+.new_record {
+  height: 40px;
+}
+
 footer {
   position: fixed;
   width: 100%;
-  height: 2.25em;  
+  height: 50px;  
   bottom: 0;
   left: 0;
-  font-size: 1.3em;
-  background-color: beige;
+  font-size: 1.2em;
+  background-color: #b9b980;
 }
 
 footer > span {
-  padding: 5px;
+  padding: 10px;
   font-style: italic;
 }
 
@@ -242,7 +248,23 @@ footer > span {
     padding: 0 8px;
   }
   
-  .test_name {
+  .game_name {
     height: 100px;
+  }
+  
+  .description {
+    width: 100%;
+  }
+
+  .description, .panels {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .panels {
+    flex: 50%;
+    flex-flow: column nowrap;
+    height: auto;
+    align-content: center;
   }
 }

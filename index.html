@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>SUDOKU</title>
@@ -19,9 +19,9 @@
       <span>Click to SHOW/HIDE test description</span>
     </button>
     <main>
-      <article class="description">
+      <article>
         <h2>Sudoku game</h2>
-        <section>
+        <section class="description">
          <p>This game come from Japan and is a mathematical brain teaser.</p>
          <p>Big square is made from 81 small square fields (9 rows, 9 columns) and it has got two 9-elements diagonals. Furthermore red lines show additional division by 3x3 squares.</p>
          <p>The task is filling all the space with digits 1-9 in a such way that in every:  <ul>
@@ -31,20 +31,21 @@
             <li>3x3 square,</li>
           </ul> 
         none of these digits will be repeated.</p>
-        <p>Example of properly filled board game is in the centre of the screen. To play a game please choose level from the list and click PLAY button (both in "Options menu").</p>
+         <p>Example of properly filled board game is in the centre of the screen. To play a game please choose level from the list and click PLAY button (both in "Options menu").</p>
         </section>
-        <sidebar>
+        <sidebar class="panels">
           <h3>Options menu</h3>
           <span>You want to play for:</span>
           <div class="click">
-            <input type="radio" id="opt1" checked="checked">fun only (<b>time off</b>)
+            <input type="radio" id="opt1" checked="checked">
+            <span>fun only (<b>time off</b>)</span>
           </div>
           <div class="click">
-            <input type="radio" id="opt2">record (<b>time on</b>)
+            <input type="radio" id="opt2"><span>record (<b>time on</b>)</span>
           </div>
           <p>Time is counting from the moment of click PLAY button.</p>
+          <p>Number of empty cells (squares) on the board depends on chosen level of the game.</p>
           <div class="rowOption">
-            <p>Number of empty cells (squares) on the board depends on chosen level of the game.</p>
             <select name="LevelList" id="LevelList">
               <option value="" selected>Choose level</option>
               <option value="12">Easy</option>
@@ -53,7 +54,7 @@
               <option value="50">Very hard</option>
             </select>
           </div>
-          <div class="rowOption">
+          <div class="buttons">
             <button class="btn" id="play">
               <span>PLAY</span>
             </button>
@@ -65,14 +66,21 @@
         <section class="Sudoku">
         <div class="gamespace"></div>
       </section>
-        <section class="Record" id="results">
-          <p>Your time is:</p>
-          <div class="watch" id="watch">
-            <div class="yourTime" id="yourTime"></div>
-            <div class="newRecord" id="newRecord"></div>
-          </div>
-          <p>Ranking table (record)</p>
-          <table>
+        <section class="panels" id="results">
+          <table class="timer">
+            <tr>
+              <th>Your time</th>
+            </tr>
+              <td id="time_now">00:00:00</td>
+            </tr>
+            <tr>
+              <td class="new_record" id="new_record"></td>
+            </tr>
+          </table>
+          <table class="record">
+            <tr>
+              <th colspan="2">Ranking table (record)</th>
+            </tr>
             <tr>
               <td>1</td>
               <td></td>

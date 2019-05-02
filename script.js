@@ -4,7 +4,7 @@ function Sudoku() {
   let game = document.querySelector('.gamespace');
 
   for (let j=1; j<=81; j++) {
-    game.insertAdjacentHTML('afterbegin', `<div class="squares"><p></p></div>`);
+    game.insertAdjacentHTML('afterbegin', `<div class="squares"><span></span></div>`);
   }
 
   let fun = document.querySelector('#opt1');
@@ -95,7 +95,7 @@ function Sudoku() {
   listGroup.addEventListener('change', selectedValues);
   
   function insertDigits(n) {
-    let cellDigits = document.getElementsByTagName('p');
+    let cellDigits = document.querySelectorAll('.squares > span');
     let indexArray = [];  
       for (let i = 0; i < n; i++) {
         let indexNumber = Math.floor(Math.random() * (fullArray.length - i));
