@@ -1,63 +1,137 @@
-html, body, .grid-container { 
-  height: 100%; 
-  margin: 0; 
-  background-color: rgba(89, 142, 142, 0.35);
-  font-family: Verdana;
-  font-size: 1em;
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: hsl(45, 10%, 85%);
 }
 
-.grid-container * {
- position: relative;
+* {
+  font-family: 'Exo 2', sans-serif;
+  box-sizing: border-box;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 1.2fr 2fr 1.2fr;
-  grid-template-rows: 2fr 4fr 0.5fr;
-  grid-column-gap: 0.5em;
-  grid-template-areas: "Description Description Description" "Options Sudoku Record" "Footer Footer Footer";
+.container {
+  min-height: 600px;
+  background-color: inherit;
 }
 
-.Description { grid-area: Description; height: auto;}
-
-h2 {
-  margin: 0.5em 0;
-  text-align: center;
+h1, h2, h3 { 
+  width: 100%;
 }
 
-.Options, .Record {
-  display: grid;
-  min-width: 100px;
+h1 { font-size: 2em; margin: 5px 0 15px 0;}
+h2 { font-size: 1.5em; margin: 5px 0 12px 0;}
+h3 { font-size: 1.17em; margin: 5px 0 10px 0;}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+p {
+  text-align: justify;
+  text-indent: 0.75em;
+  margin: 0.3em 0;
+}
+
+.game_name {
+  display: flex;
+  width: 100%;
+  height: 120px;
+  flex-flow: row wrap;
+  align-content: center;
+  background-color: #DBE0FF;
+}
+
+.game_name > a, a > h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game_name > a {
+  width: 100%;
+  height: 100%;
+}
+
+a > h1 {
+  height: 50px;
+  flex-flow: row nowrap;
+}
+
+.test {
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 2.5em;
+}
+
+.hide_show {
+  display: flex;  
+  width: 100%;
+  height: 3.5em;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(165, 40%, 50%);
+}
+
+.hide_show > span {
+  font-size: 1.75em;
+}
+
+main {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0 10px;
+  margin-bottom: 60px;
+}
+
+.description {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+sidebar, .Record {
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 200px;
   min-height: 450px;
   height: auto;
-  grid-template-columns: 1fr;
 }
 
-.Options {
-  grid-template-rows: 0.4fr 1fr 2fr 1fr;
-  grid-template-areas: "h3" "rowOption" "rowOption" "rowOption";
-  grid-area: Options;
+sidebar {
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 200px;
+  justify-content: center;
+  align-content: center;
 }
 
 h3 {
-  display: block;
-  margin: 0;
-  text-align: center;
-  background-color: burlywood;
+  display: flex;
+  justify-content: center;
+  
+  background-color: #B4CC68;
 }
 
-button {
-  width: 4em;
+.btn {
+  width: 45%;
   height: 2em;
-  margin: 0 5px;
-  font-size: 20px;
+  font-size: 24px;
+  background-color: #DDDBD5;
+}
+
+.btn:first-of-type {
+  color: #131440;
+}
+
+.btn:last-of-type {
+  color: #801721;
 }
 
 section, .rowOption, .rowRecord {
   margin: 10px 5px;
 }
 
-input {
+input[type='radio'] {
   display: inline-block;
   float: left;
 }
@@ -74,44 +148,32 @@ li {
 
 .Sudoku {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
-  min-width: 400px;
+  height: 400px;
+  width: 400px;
 }
 
 .gamespace {
   display: flex;
-  height: 360px;
-  width: 360px;  
+  height: 100%;
+  width: 100%;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-between;
   border: 2px solid black;
 }
 
 .squares {
   display: flex;
-  height: 40px;
+  height: auto;
   width: 40px;
   background-color: rgba(237, 198, 123, 0.55);
 }
 
-p {
-  display: inline-block;
-  padding: 8px 0;
-  margin: 0;
-  height: auto;
-  width: 100%;
-  line-height: 0.5em;
-  text-align: center;
-}
 
 .Record {
-  grid-template-rows: 1fr 2fr;
-  grid-row-gap: 5px;
-  grid-template-areas: "rowRecord" "rowRecord";
-  grid-area: Record;
+  
 }
 
 .watch, .ranking {
@@ -122,43 +184,65 @@ p {
 }
 
 .watch {
-  display: grid;
-  min-height: 100px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 3fr 1fr;
-  grid-template-areas: "yourTime" "newRecord";
-  grid-area: ranking;
+  
 }
 
 .ranking {
-  display: grid;
-  min-height: 200px;
-  font: 14px Helvetica;
-  grid-template-columns: 0.2fr 1fr;
-  grid-template-rows: repeat (10, 1fr);
-  grid-template-areas: "no times" "no times" "no times" "no times" "no times" "no times" "no times" "no times" "no times" "no times";
-  grid-area: ranking;
+  
 }
 
-.no {  
+sidebar, .Record, .rowOption, .rowRecord {
+  background-color: #BFB575;
+}
+
+table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 1.4em;
+}
+
+td {
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid black;  
+}
+
+td:first-of-type {
+  width: 10%;
   text-align: right;
-  border-right: 1px solid black; 
 }
 
-.times, .no, .yourTime {
-  border-bottom: 1px solid black;
+footer {
+  position: fixed;
+  width: 100%;
+  height: 2.25em;  
+  bottom: 0;
+  left: 0;
+  font-size: 1.3em;
+  background-color: beige;
 }
 
-.times:last-of-type, .no:nth-last-child(2) {  
-  border-bottom: none;
+footer > span {
+  padding: 5px;
+  font-style: italic;
 }
 
-.Options, .Record, .rowOption, .rowRecord {
-  background-color: darkgray;
-}
-
-.Footer { 
-  grid-area: Footer; 
-  min-height: 35px;
-  background-color: bisque;
+@media screen and (max-width: 400px) {
+  body, html {
+    font-size: 14px;
+  }
+  
+  h1 { font-size: 1.4em; }
+  h2 { font-size: 1.2em; }
+  h3 { font-size: 1em; }
+    
+  main {
+    padding: 0 8px;
+  }
+  
+  .test_name {
+    height: 100px;
+  }
 }
