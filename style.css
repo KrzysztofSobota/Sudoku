@@ -157,17 +157,19 @@ input[type='radio'] {
 }
 
 .Sudoku {
-  height: 364px;
-  width: 364px;
+  height: 400px; 
+  width: 400px;
   align-self: center;
   margin: 0 10px;
 }
 
 .gamespace {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-flow: row wrap;
+  display: flex; 
+  height: 100%; 
+  width: 100%; 
+  flex-flow: row wrap; 
+  flex-grow: 0; 
+  justify-content: center; 
   border: 2px solid black;
 }
 
@@ -175,8 +177,8 @@ input[type='radio'] {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  height: auto;
-  width: 40px;
+  height: calc( 100% / 9 ); 
+  width: calc( 100% / 9 );
   background-color: rgba(237, 198, 123, 0.55);
 }
 
