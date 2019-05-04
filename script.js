@@ -4,7 +4,7 @@ function Sudoku() {
   let game = document.querySelector('.gamespace');
 
   for (let j=1; j<=81; j++) {
-    game.insertAdjacentHTML('afterbegin', `<div class="squares"><p></p></div>`);
+    game.insertAdjacentHTML('afterbegin', `<div class="squares"><span></span></div>`);
   }
 
   let fun = document.querySelector('#opt1');
@@ -81,7 +81,7 @@ function Sudoku() {
   mainDiagonals;
   
   
-  let listGroup = document.getElementById('LevelList');
+  let listGroup = document.querySelector('#level_list');
   
   function selectedValues() {
     let listValue = listGroup.value;
@@ -95,7 +95,7 @@ function Sudoku() {
   listGroup.addEventListener('change', selectedValues);
   
   function insertDigits(n) {
-    let cellDigits = document.getElementsByTagName('p');
+    let cellDigits = document.querySelectorAll('.squares > span');
     let indexArray = [];  
       for (let i = 0; i < n; i++) {
         let indexNumber = Math.floor(Math.random() * (fullArray.length - i));
@@ -114,13 +114,12 @@ function Sudoku() {
   insertDigits(n);
   
   function f(){
-    document.getElementById('watch').innerHTML=/[\d:]{8}/.exec(Date());
+    document.querySelector('#watch').textContent=/[\d:]{8}/.exec(Date());
     setTimeout('f()',1000);
   }  
   
   
 }
 
-let btn = document.getElementById('play');
+let btn = document.querySelector('#play');
 btn.addEventListener('click', Sudoku);
-

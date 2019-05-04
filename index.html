@@ -1,68 +1,137 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>SUDOKU</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SUDOKU</title>
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Exo+2:200,400" rel="stylesheet">  
 </head>
 <body>
-  <div class="grid-container">
-    <div class="Description">
-      <h2>Sudoku game</h2>
-      <section>This game come from Japan and is a mathematical brain teaser. Big square is made from 9 rows, 9 columns and it has got two 9-elements diagonals. Furthermore red lines show additional division by 3x3 squares. The task is fill all the space with digits 1-9 in a such way that in every: <ul>
-        <li>row,</li>
-        <li>column,</li>
-        <li>main diagonals,</li>
-        <li>3x3 square,</li>
-      </ul> 
-      none of these digits will be repeated.
-      Example of properly filled board game is in the centre of the screen. To play a game please choose level from the list and click PLAY button (both in "Options menu").
-      </section>
-    </div>
-    <div class="Options">
-      <h3>Options menu</h3>
-      <div class="rowOption">Play for:
-        <div><input type="radio" id="opt1" checked="checked">fun only (time off)</div>
-        <div><input type="radio" id="opt2">record (time on)<br> Time is counting from the moment of click PLAY button.</div>
-      </div>
-      <div class="rowOption">Number of empty cells (squares) on the board depends on chosen level of the game.<br>
-        <select name="LevelList" id="LevelList">
-          <option value="" selected>Choose level</option>
-          <option value="12">Easy</option>
-          <option value="21">Normal</option>
-          <option value="32">Hard</option>
-          <option value="50">Very hard</option>
-        </select>
-      </div>
-      <div class="rowOption"><button class="btn" id="play">PLAY</button><button class="btn" id="reset">RESET</button></div>
-    </div>
-    <div class="Sudoku">
-      <div class="gamespace"></div>
-    </div>
-    <div class="Record" id="results">
-      <div class="rowRecord">Your time is:
-        <div class="watch" id="watch">
-          <div class="yourTime" id="yourTime"></div>
-          <div class="newRecord" id="newRecord"></div>
-        </div>
-      </div>
-      <div class="rowRecord">Ranking table (record)
-        <div class="ranking" id="ranking">
-          <div class="no">1</div><div class="times" id="pos1"></div>
-          <div class="no">2</div><div class="times" id="pos2"></div>
-          <div class="no">3</div><div class="times" id="pos3"></div>
-          <div class="no">4</div><div class="times" id="pos4"></div>
-          <div class="no">5</div><div class="times" id="pos5"></div>
-          <div class="no">6</div><div class="times" id="pos6"></div>
-          <div class="no">7</div><div class="times" id="pos7"></div>
-          <div class="no">8</div><div class="times" id="pos8"></div>
-          <div class="no">9</div><div class="times" id="pos9"></div>
-          <div class="no">10</div><div class="times" id="pos10"></div>
-        </div>
-      </div>
-    </div>
-    <div class="Footer">Made by Krzych 2019</div>
+  <div class="container">
+   <header class="game_name">
+      <a href="">
+        <h1><img src="" height="60" alt="sudoku symbol"><span class="game">Sudoku</span>
+        </h1>
+      </a>
+    </header>
+    <button class="hide_show" id="savespace">
+      <span>Click to SHOW/HIDE test description</span>
+    </button>
+    <main>
+      <article>
+        <section class="description">
+         <h2>Sudoku game</h2>
+         <p>This game come from Japan and is a mathematical brain teaser.</p>
+         <p>Big square is made from 81 small square fields (9 rows, 9 columns) and it has got two main 9-elements diagonals. Furthermore red lines show additional division by 3x3 squares.</p>
+         <p>The task is filling all the space with digits 1-9 in a such way that in every:</p>  <ul>
+            <li>row,</li>
+            <li>column,</li>
+            <li>main diagonals,</li>
+            <li>3x3 square,</li>
+          </ul> 
+         <p>none of these digits will be repeated.</p>
+         <p>Example of properly filled board game is in the centre of the screen. To play a game please choose level from the list and click PLAY button (both in "Options menu").</p>
+        </section>
+        <sidebar class="panels">
+          <header>Options menu</header>
+          <span>You want to play for:</span>
+          <div class="click">
+            <input type="radio" id="opt1" checked="checked">
+            <span>fun only (<b>time off</b>)</span>
+          </div>
+          <div class="click">
+            <input type="radio" id="opt2"><span>record (<b>time on</b>)</span>
+          </div>
+          <p>Time is counting from the moment of click PLAY button.</p>
+          <p>Number of empty cells (squares) on the board depends on chosen level of the game.</p>
+          <div class="game_levels">
+            <label for="level_list">
+             <span>Levels of sudoku</span>
+            </label>
+            <select class="level_list" name="level_list" id="level_list">
+              <option value="" selected>Click here</option>
+              <option value="12">Easy</option>
+              <option value="21">Normal</option>
+              <option value="36">Hard</option>
+              <option value="54">Very hard</option>
+            </select>
+          </div>
+          <div class="buttons">
+            <button id="play">
+              <span>PLAY</span>
+            </button>
+            <button id="reset">
+              <span>RESET</span>
+            </button>
+          </div>
+        </sidebar>
+        <section class="sudoku">
+          <div class="gamespace"></div>
+        </section>
+        <section class="panels" id="results">
+          <table class="timer">
+            <tr>
+              <th>Your time</th>
+            </tr>
+            <tr>
+              <td id="time_now">00:00:00</td>
+            </tr>
+            <tr>
+              <td id="new_record">NEW RECORD !!!</td>
+            </tr>
+          </table>
+          <table class="record">
+            <tr>
+              <th colspan="2">Ranking table (record)</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td></td>
+            </tr>
+          </table>
+        </section>
+      </article>
+    </main>
+    <footer>
+      <span>Krzysztof Sobota 2019</span>
+    </footer>
   </div>
 <script type="text/javascript" src="script.js"></script>
 </body>
