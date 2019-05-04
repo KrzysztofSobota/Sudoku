@@ -81,7 +81,7 @@ function Sudoku() {
   mainDiagonals;
   
   
-  let listGroup = document.getElementById('LevelList');
+  let listGroup = document.querySelector('#level_list');
   
   function selectedValues() {
     let listValue = listGroup.value;
@@ -114,13 +114,12 @@ function Sudoku() {
   insertDigits(n);
   
   function f(){
-    document.getElementById('watch').innerHTML=/[\d:]{8}/.exec(Date());
+    document.querySelector('#watch').textContent=/[\d:]{8}/.exec(Date());
     setTimeout('f()',1000);
   }  
   
   
 }
 
-let btn = document.getElementById('play');
+let btn = document.querySelector('#play');
 btn.addEventListener('click', Sudoku);
-
