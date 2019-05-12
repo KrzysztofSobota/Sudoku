@@ -30,24 +30,24 @@
             <li>main diagonals,</li>
             <li>3x3 square,</li>
           </ul> 
-         <p>none of these digits will be repeated.</p>
-         <p>Example of properly filled board game is in the centre of the screen. To play a game please choose level from the list and click PLAY button (both in "Options menu").</p>
+         <span>none of these digits will be repeated.</span>
+         <p>Example of properly filled board game is in the centre of the screen. To play a game please choose level from the list and click PLAY button (both in "Options menu"). Number of empty cells (squares) on the board depends on chosen level of the game.</p>
         </section>
         <sidebar class="panels">
-          <header>Options menu</header>
-          <span>You want to play for:</span>
-          <div class="click">
-            <input type="radio" id="opt1" checked="checked">
-            <span>fun only (<b>time off</b>)</span>
-          </div>
-          <div class="click">
-            <input type="radio" id="opt2"><span>record (<b>time on</b>)</span>
+          <h2>Options menu</h2>
+          <div class="options">
+            <span>You want to play for:</span>
+            <div class="click">
+              <input type="radio" id="opt1" checked="checked"><span>fun only (time is <b>off</b>)</span>
+            </div>
+            <div class="click">
+              <input type="radio" id="opt2"><span>record (time is <b>on</b>)</span>
+            </div>
           </div>
           <p>Time is counting from the moment of click PLAY button.</p>
-          <p>Number of empty cells (squares) on the board depends on chosen level of the game.</p>
           <div class="game_levels">
             <label for="level_list">
-             <span>Levels of sudoku</span>
+              <span>Levels of sudoku</span>
             </label>
             <select class="level_list" name="level_list" id="level_list">
               <option value="" selected>Click here</option>
