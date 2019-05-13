@@ -63,8 +63,12 @@ a > h1 {
   flex-flow: row nowrap;
 }
 
+h1 > img {
+  height: 100%;
+}
+
 .game {
-  padding-left: 20px;
+  padding-left: 0.25em;
   margin-bottom: 9px;
   font-size: 60px;
 }
@@ -157,7 +161,7 @@ li {
   padding-left: 5px;
   margin-bottom: 10px;
   font-size: 18px;
-  background-color: hsl(46, 14%, 84%);
+  background: linear-gradient(to right, hsl(46, 14%, 86%) 0%, hsl(60, 29%, 61%) 100%);
 }
 
 .level_list {
@@ -210,6 +214,7 @@ input[type='radio'] {
   flex-flow: row wrap; 
   flex-grow: 0; 
   justify-content: center;
+  background-image: url(/example.png);
 }
 
 .squares {
@@ -238,20 +243,20 @@ table {
 
 th {
   font-size: 18px;
-  height: 30px;
+  height: 40px;
   padding-bottom: 5px;
 }
 
 td {
   font-size: 18px;
   height: 30px;
-  background-color: transparent;
+  background-color: hsl(46, 23%, 82%);
   border: 1px solid black;  
 }
 
 .timer {
   margin-top: 5px;  
-  height: 120px;  
+  height: auto;  
   border: 1px solid black;
 }
 
@@ -288,28 +293,49 @@ footer > span {
   h1 { font-size: 1.4em; }
   h2 { font-size: 1.2em; }
   h3 { font-size: 1em; }
-    
+  
+  .game {
+    font-size: 45px;
+  }
+
+  .hide_show > span {
+    font-size: 1.4em;
+  }
+
   main {
-    padding: 0 8px;
+    padding: 5px 10px;
+    margin-bottom: 60px;
   }
   
   .game_name {
-    height: 100px;
+    height: 60px;
+  }
+
+  .description, .panels {
+    display: flex;
   }
   
   .description {
     width: 100%;
   }
-
-  .description, .panels {
-    display: flex;
-    flex-flow: row wrap;
+  
+  sidebar {
+    
   }
-
+  
   .panels {
-    flex: 50%;
-    flex-flow: column nowrap;
-    height: auto;
-    align-content: center;
+    max-width: 50%;
+    flex-flow: row wrap;
+    order: 1;
+  }
+  
+  .sudoku {
+    width: 300px;
+    height: 300px;
+    order: 2;
+  }
+  
+  .gamespace {    
+    background-image: url(/example-300px.png);
   }
 }
