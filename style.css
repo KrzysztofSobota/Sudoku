@@ -101,13 +101,25 @@ article, .description {
   flex-flow: row wrap;
 }
 
-section {
-  margin: 10px 0;
+.description {
+  margin-bottom: 20px;
+}
+
+.rules {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 15px 0;
+}
+
+.animations * {
+  padding: 5px;
 }
 
 ul {
-  width: 100%;
-  padding-left: 2.5em;
+  display: block;
+  width: auto;
+  padding: 0 2em;
   margin-top: 0;
 }
 
@@ -123,11 +135,11 @@ li {
 
 .panels > h2 {
   display: flex;
-  height: 30px;
-  justify-content: center;
-  align-items: center;
+  height: 1.6em;
   line-height: 1.5em;
   font-size: 21px;
+  justify-content: center;
+  align-items: center;
   background-color: hsl(282, 90%, 30%);
   background: linear-gradient(to bottom right, hsl(282, 90%, 35%) 0%, hsl(60, 29%, 65%) 100%);
   color: hsl(62, 88%, 55%);
@@ -136,7 +148,8 @@ li {
 .panels {
   flex-basis: 250px;
   height: auto;
-  padding: 12px;
+  padding: 10px;
+  margin: 0;
   background-color: hsl(60, 29%, 61%);
 }
 
@@ -146,18 +159,14 @@ li {
 }
 
 .click {
-  height: 1em;
+  height: 0.6em;
   width: 100%;
 }
 
-.game_levels, .options > span, label > span {
-  height: 25px;
-  margin: 5px 0;
-}
-
-.options > span, label > span {
+.titles {
   display: inline-block;
   width: 100%;
+  height: 20px;
   padding-left: 5px;
   margin-bottom: 10px;
   font-size: 18px;
@@ -310,28 +319,69 @@ footer > span {
   .game_name {
     height: 60px;
   }
-
-  .description, .panels {
-    display: flex;
-  }
-  
-  .description {
-    width: 100%;
-  }
-  
-  sidebar {
     
+  sidebar span {
+    font-size: 14px;
   }
+
+  
+.game_levels, .options > span, label > span {
+  height: 25px;
+  margin: 5px 0;
+}
+
+.options > span, label > span {
+  display: inline-block;
+  width: 100%;
+  padding-left: 5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  background: linear-gradient(to right, hsl(46, 14%, 86%) 0%, hsl(60, 29%, 61%) 100%);
+}
+
+.level_list {
+  height: auto;
+  font-size: 18px;
+  background-color: hsl(45, 28%, 85%);
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+  justify-content: center;
+}
+
+.buttons > button {
+  width: 45%;
+  height: 100%;
+  margin: 0 5px;
+  border: 3px solid hsl(228, 52%, 40%);
+  border-radius: 10px;
+  font-size: 28px;
+  background-color: silver;
+}
+  
+.buttons > button:first-of-type {
+  color: #131440;
+}
+
+.buttons > button:last-of-type {
+  color: #801721;
+}
   
   .panels {
     max-width: 50%;
-    flex-flow: row wrap;
+    padding: 5px;
+    margin: 0;
     order: 1;
   }
   
   .sudoku {
     width: 300px;
     height: 300px;
+    margin: 10px auto;
     order: 2;
   }
   

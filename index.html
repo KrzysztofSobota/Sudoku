@@ -24,22 +24,28 @@
          <h2>Sudoku game</h2>
          <p>This game come from Japan and is a mathematical brain teaser.</p>
          <p>Big square is made from 81 small square fields (9 rows, 9 columns) and it has got two main 9-elements diagonals. Furthermore red lines show additional division by 3x3 squares.</p>
-         <p>The task is filling all the space with digits 1-9 in a such way that in every:</p> <div class="animations">
+         <p>The task is filling all the space with digits 1-9 in a such way that in every:</p>
+         <div class="rules">
            <ul>
              <li>row,</li>
              <li>column,</li>
              <li>main diagonals,</li>
              <li>3x3 square,</li>
-           </ul> 
-           <img src="/sudoku_animation.svg" alt="rows, columns and main diagonals of sudoku">
-         </div> 
+           </ul>
+           <div class="animations">
+             <img src="/row_animation.svg" width="100" alt="9 rows of sudoku">
+             <img src="/column_animation.svg" width="100" alt="9 columns of sudoku">
+             <img src="/diagonals_animation.svg" width="100" alt="2 main diagonals of sudoku">
+             <img src="/squares_animation.svg" width="100" alt="9 smaller squares of sudoku">
+           </div>
+         </div>
          <span>none of these digits will be repeated.</span>
-         <p>Example of properly filled board game is in the centre of the screen. To play a game please choose level from the list and click PLAY button (both in "Options menu"). Number of empty cells (squares) on the board depends on chosen level of the game.</p>
+         <p>Example of properly filled board game is below - after click "START" button image will disappear and the sudoku game begun. In "Options menu" you can find type of the game (time on/off) and a few difficulty levels. Number of empty cells (squares) on the board depends on chosen level of the game.</p>
         </section>
         <sidebar class="panels">
           <h2>Options menu</h2>
           <div class="options">
-            <span>You want to play for:</span>
+            <span class="titles">You want to play for:</span>
             <div class="click">
               <input type="radio" id="opt1" checked="checked"><span>fun only (time is <b>off</b>)</span>
             </div>
@@ -50,7 +56,7 @@
           <p>Time is counting from the moment of click PLAY button.</p>
           <div class="game_levels">
             <label for="level_list">
-              <span>Levels of sudoku</span>
+              <span class="titles">Levels of sudoku</span>
             </label>
             <select class="level_list" name="level_list" id="level_list">
               <option value="" selected>Click here</option>
@@ -73,6 +79,7 @@
           <div class="gamespace"></div>
         </section>
         <section class="panels" id="results">
+          <h2>Time and ranking</h2>
           <table class="timer">
             <tr>
               <th>Your time</th>
