@@ -7,22 +7,59 @@ function Sudoku() {
     game.insertAdjacentHTML('afterbegin', `<div class="squares"><span></span></div>`);
   }
 
-  let fun = document.querySelector('#opt1');
-  let record = document.querySelector('#opt2');
-  fun.addEventListener('click', function(e) {
-    let watch = document.querySelector('#results');
-    let ranking = document.querySelector('#ranking');
-    watch.style.visibility = 'hidden';
-    ranking.style.visibility = 'hidden';
-  })
+  const timeIntervals = [
+    /* all in milliseconds */
+    ["hour", 3600000],
+    ["minute", 60000],
+    ["second", 1000]
+  ];
+
+  const tick = (start) => () => {
+    let elapsed = Date.now() - start;
+    
+    for (let [unit, ms] of timeIntervals) {
+      let timing = Math.floor(elapsed / ms);
+      let param = document.getElementById(unit);
+      
+      if (typeof (timing) == "number") {
+        timing < 10 ? param.textContent = `0${timing}` : param.textContent = `${timing}`;
+      }      
+            
+      elapsed %= ms;    
+    }
+};
+
+    /*let timer = window.setInterval(tick(Date.now()), 1000);*/
+  
+    let fun = document.querySelector('#opt1');
+    let record = document.querySelector('#opt2');
+    let watch = document.querySelector('#time_now');
+  
+  function chooseGameType() {    
+    if (fun.checked == true) {
+      fun.value = 1;
+      record.value = 0;
+    } 
+    else {
+      fun.value = 0;
+      record.value = 1;
+      window.setInterval(tick(Date.now()), 1000);
+    }
+  }
+  
+  fun.addEventListener('change', chooseGameType, false);
+  record.addEventListener('change', chooseGameType, false);
   
   let sortArray = [];
   
   function sorting() {
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    for (let i=1; i<=9; i++) {
-      let a = Math.round(Math.random() * (numbers.length - 1)); //losujemy pozycję liczb w tablicy 'numbers'
-      let b = numbers[a]; //pobieramy cyfrę z danej pozycji
+    for (let i = 1; i <= 9; i++) {
+      // random index 'a' number from 'numbers' array
+      let a = Math.round(Math.random() * (numbers.length - 1)); 
+      
+      // get digit from index position
+      let b = numbers[a]; 
       sortArray.push(b);
       numbers.splice(a, 1);
     }
@@ -89,8 +126,7 @@ function Sudoku() {
     return testNumber;
   }
   
-  let n = selectedValues();
-  
+  let n = selectedValues();  
   
   listGroup.addEventListener('change', selectedValues);
   
@@ -113,13 +149,16 @@ function Sudoku() {
   
   insertDigits(n);
   
-  function f(){
-    document.querySelector('#watch').textContent=/[\d:]{8}/.exec(Date());
-    setTimeout('f()',1000);
-  }  
+  let btnReset = document.querySelector('#reset');
+  btnReset.addEventListener('click', function reset() {
+    window.clearInterval(tick(Date.now()));
+    
+    let sudokuImage = document.querySelector('.gamespace');
+    sudokuImage.style.backgroundImage = 'url(/example.png)';
+  }, false);
   
   
 }
 
-let btn = document.querySelector('#play');
-btn.addEventListener('click', Sudoku);
+let btnStart = document.querySelector('#play');
+btnStart.addEventListener('click', Sudoku, {once: true});

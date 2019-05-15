@@ -47,10 +47,12 @@
           <div class="options">
             <span class="titles">You want to play for:</span>
             <div class="click">
-              <input type="radio" id="opt1" checked="checked"><span>fun only (time is <b>off</b>)</span>
+              <input type="radio" name="gameopt" id="opt1">
+              <label for="opt1">fun only (time is <b>off</b>)</label>
             </div>
             <div class="click">
-              <input type="radio" id="opt2"><span>record (time is <b>on</b>)</span>
+              <input type="radio" name="gameopt" id="opt2">
+              <label for="opt2">record (time is <b>on</b>)</label>
             </div>
           </div>
           <p>Time is counting from the moment of click PLAY button.</p>
@@ -85,7 +87,13 @@
               <th>Your time</th>
             </tr>
             <tr>
-              <td id="time_now">00:00:00</td>
+              <td id="time_now">
+                <p>
+                  <span id="hour">00</span>:
+                  <span id="minute">00</span>:
+                  <span id="second">00</span>
+                </p>
+              </td>
             </tr>
             <tr>
               <td id="new_record">NEW RECORD !!!</td>
