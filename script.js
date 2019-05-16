@@ -118,7 +118,7 @@ function Sudoku() {
   mainDiagonals;
   
   
-  let listGroup = document.querySelector('#level_list');
+  let listGroup = document.querySelector('#level-list');
   
   function selectedValues() {
     let listValue = listGroup.value;
