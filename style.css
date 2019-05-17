@@ -89,23 +89,28 @@ h1 > img {
 }
 
 main {
-  display: flex;
-  flex-flow: row wrap;
-  padding: 5px 15px;
+  padding: 10px;
   margin-bottom: 70px;
 }
 
-/*article {  
-  flex: 1 0 100%;
-}*/
-
-article, .description {
+article, main, section, .panels {
   display: flex;
   flex-flow: row wrap;
 }
 
+.side {
+  flex-basis: 250px;
+  order: -1;
+}
+
 .description {
-  margin-bottom: 20px;
+  flex: 1 0 650px;
+  max-height: 30%;
+  align-content: flex-start;
+}
+
+.description, .panels {
+  padding: 10px;
 }
 
 .rules {
@@ -131,19 +136,12 @@ li {
   list-style: disc;
 }
 
-.panels, .sudoku {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-sidebar {
-  align-content: flex-start;
+.description-part {
+  display: flex;flex-flow: row wrap;
 }
 
 .panels {
-  flex-basis: 250px;
   height: auto;
-  padding: 10px;
   background-color: hsl(58, 26%, 70%);
 }
 
@@ -221,16 +219,16 @@ input[type='radio'] {
 }
 
 .sudoku {
-  height: 400px;
-  width: 400px;
-  align-self: center;
-  margin: 0 auto;
+  min-height: 400px;
+  min-width: 400px;
+  
+  margin: 0;
 }
 
 .gamespace {
   display: flex; 
-  height: 100%; 
-  width: 100%; 
+  height: 400px; 
+  width: 400px; 
   flex-flow: row wrap;
   justify-content: center;
   background-image: url(/example.png);
@@ -250,6 +248,10 @@ input[type='radio'] {
   display: flex;
   align-self: center;
   font-size: 1.5em;  
+}
+
+.squares > input[type='text'] {
+  border: 0
 }
 
 table {
