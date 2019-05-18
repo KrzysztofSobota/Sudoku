@@ -4,7 +4,6 @@
 function Sudoku() {
   let game = document.querySelector('.gamespace');
   
-  
 //  Animations on/off
   let animClick = document.querySelector('#anim');
   animClick.addEventListener('click', function animOnOff() {
@@ -16,15 +15,8 @@ function Sudoku() {
   for (let j=1; j<=81; j++) {
     game.insertAdjacentHTML('afterbegin', `<div class="squares"><span></span></div>`);
   }
-
   
-
-    
-  
-    
-  
-  let sortArray = [];
-  
+  let sortArray = [];  
   function sorting() {
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     for (let i = 1; i <= 9; i++) {
@@ -42,9 +34,10 @@ function Sudoku() {
 
   let mixed = sorting();
 
-//  Make 27 parts of small arrays
+//  Make 27 part of small arrays
   let fullArray = [];
   function arrayParts(mixed) {
+   
     let [i1, i2, i3, ...others1] = sortArray;
     let [ , , , i4, i5, i6, ...others2] = sortArray;
     let [ , , , , , , i7, i8, i9] = sortArray;
@@ -65,18 +58,16 @@ function Sudoku() {
     
     return fullArray;
   }
-
-  arrayParts();
   
-//  Check correct sum for all digits before inside them on the board
-  let sum = fullArray.reduce(function(previousValue, currentValue, index, array) {
+  arrayParts(mixed);
+  
+//  Check correct sum for all digits and 2 main diagonals before inside them on the board
+  let sumDigits = fullArray.reduce(function(previousValue, currentValue, index, array) {
       return previousValue + currentValue;
     });
-    if(sum != 405) {
+    if(sumDigits != 405) {
       alert('Wrong digits!');
     };
-  
-//  Check correct sum for 2 main diagonals
   let mainDiagonals = function() {
       let leftResult = 0;
       let rightResult = 0;
@@ -91,30 +82,73 @@ function Sudoku() {
           alert('Wrong digits!');
         };
     };
-  mainDiagonals;
   
-  
+
+// Check clicked type of checkbox
+  let fun = document.querySelector('#opt1');
+  let record = document.querySelector('#opt2');
+
+// Choose type of game
+  function GameType() {
+    let timing = undefined;
+      if (record.checked == true) {
+        timing = 1;
+      } 
+      else {
+        timing = 0;      
+      }
+
+    return timing;
+  }
+
+  fun.addEventListener('click', GameType, false);
+  record.addEventListener('click', GameType, false);
+
+// Function to use timer
+  const timeIntervals = [
+      /* all in milliseconds */
+      ["hour", 3600000],
+      ["minute", 60000],
+      ["second", 1000]
+    ];
+  const tick = (start) => () => {
+      let elapsed = Date.now() - start;
+
+      for (let [unit, ms] of timeIntervals) {
+        let timing = Math.floor(elapsed / ms);
+        let param = document.getElementById(unit);
+
+        if (typeof (timing) == "number") {
+          timing < 10 ? param.textContent = `0${timing}` : param.textContent = `${timing}`;
+        }      
+
+        elapsed %= ms;    
+      }
+  };
+
+  let btnStart = document.querySelector('#play');
+
+// Selected number of digits (game level type)
   let listGroup = document.querySelector('#level-list');
-  
   function selectedValues() {
     let listValue = listGroup.value;
     let testNumber = parseInt(listValue);
+
     return testNumber;
   }
-  
-  let n = selectedValues();  
-  
+
+  let n = selectedValues();
   listGroup.addEventListener('change', selectedValues);
   
 //  Put selected number of digits (n) into the board
   function insertDigits(n) {
     let cellDigits = document.querySelectorAll('.squares > span');
-    let indexArray = [];  
+    let indexArray = [];
+    let indexNumber = undefined;  
       for (let i = 0; i < n; i++) {
-        let indexNumber = Math.floor(Math.random() * (fullArray.length - i));
+        indexNumber = Math.floor(Math.random() * (fullArray.length - i));
         indexArray.push(indexNumber);
       }
-        
       
       for (let k = 0; k < fullArray.length; k++) {
         if (k == n) {
@@ -122,83 +156,42 @@ function Sudoku() {
         }
         cellDigits[k].textContent = `${fullArray[k]}`;
       }
+    
+      if (indexNumber = undefined) {
+        game.src = '/example.png';
+        return ;
+      }
+    alert(`${indexNumber}`);
   }
-  
+
   insertDigits(n);
-
   
-}
-
-// Check clicked type of checkbox
-  let fun = document.querySelector('#opt1');
-  let record = document.querySelector('#opt2');
-
-function Controls() {
-  let timing = undefined;
-    
-    if (record.checked == true) {
-      
-      timing = 1;
-    } 
-    else {
-      timing = 0;      
-    }
-    
-  return timing;
-}
-  
-  fun.addEventListener('click', Controls, false);
-  record.addEventListener('click', Controls, false);
-
-// Function to use timer
-  const timeIntervals = [
-    /* all in milliseconds */
-    ["hour", 3600000],
-    ["minute", 60000],
-    ["second", 1000]
-  ];
-  const tick = (start) => () => {
-    let elapsed = Date.now() - start;
-    
-    for (let [unit, ms] of timeIntervals) {
-      let timing = Math.floor(elapsed / ms);
-      let param = document.getElementById(unit);
-      
-      if (typeof (timing) == "number") {
-        timing < 10 ? param.textContent = `0${timing}` : param.textContent = `${timing}`;
-      }      
-            
-      elapsed %= ms;    
-    }
-};
-
-// Timer on
-  let btnStart = document.querySelector('#play');
-
+// Sudoku start only when type and level of game are checked
   btnStart.addEventListener('click', function timer(timing) {
-    Controls();
-    if (timing = 0) {
-      
-    }
-    else if (timing = 1) {
-      window.setInterval(tick(Date.now()), 1000);
+    GameType();
+    insertDigits(n);
+    if (n > 0) {
+      if (timing = 1) {
+        window.setInterval(tick(Date.now()), 1000);
+      } 
+      else {
+        return alert('?');
+      }    
     }
     else {
-      return ;
+      return alert(`${n}`);
     }
   }, {once: true});
 
-//  Timer off
+//  Game reset and timer off
   let btnReset = document.querySelector('#reset');
-    
-  btnReset.addEventListener('click', function reset() {
-    window.clearInterval(tick(Date.now()));
-    
-  document.querySelector('.gamespace').style.backgroundImage = 'url(/example.png)';
-  }, false);
+  btnReset.addEventListener('click', function reset(tick) {
+      window.clearInterval(tick(Date.now()));
 
+    document.querySelector('.gamespace').style.backgroundImage = 'url(/example.png)';
+    }, {once: true});  
   
-  let watch = document.querySelector('#time_now');
-  
-  
-  btnStart.addEventListener('click', Sudoku, {once: true});
+}
+
+let btnStart = document.querySelector('#play');
+btnStart.addEventListener('click', Sudoku, {once: true});
