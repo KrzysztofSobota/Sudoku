@@ -22,32 +22,6 @@
     </button>
     <main>
       <article>
-        <section class="description">
-          <h2>Sudoku game</h2>
-          <p>This game come from Japan and is a mathematical brain teaser.</p>
-          <p>Big square is made from 81 small square fields (9 rows, 9 columns) and it has got two main 9-elements diagonals. Furthermore red lines show additional division by 3x3 squares.</p>
-          <p>The task is filling all the space with digits 1-9 in a such way that in every:</p>
-          <div class="rules">
-            <ul>
-               <li>row,</li>
-               <li>column,</li>
-               <li>main diagonals,</li>
-               <li>3x3 square,</li>
-             </ul>
-            <div class="animations">
-               <div class="anim-click">
-                 <input type="checkbox" id="anim">
-                 <label for="anim">Disable animations </label>             
-               </div>
-               <!--<img src="/row_animation.svg" width="100" id="anim-1" alt="9 rows of sudoku">
-               <img src="/column_animation.svg" width="100" id="anim-2" alt="9 columns of sudoku">
-               <img src="/diagonals_animation.svg" width="100" id="anim-3" alt="2 main diagonals of sudoku">
-               <img src="/squares_animation.svg" width="100" id="anim-4" alt="9 smaller squares of sudoku">-->
-             </div>
-          </div>
-          <p>none of these digits will be repeated.</p>
-          <p>Example of properly filled board game is below - after click "START" button image will disappear and the sudoku game begun. In "Options menu" you can find type of the game (time on/off) and a few difficulty levels. Number of empty cells (squares) on the board depends on chosen level of the game.</p>
-        </section>
         <section class="side">
           <div class="panels">
           <h2>Options menu</h2>
@@ -66,8 +40,8 @@
               <label for="level-list">
                 <span class="titles">Levels of sudoku</span>
               </label>
-              <select class="level-list" name="level-list" id="level-list">
-                <option value="" selected>Click here</option>
+              <select class="level-list" name="level-list" disabled id="level-list">
+                <option value="0" selected>Click here</option>
                 <option value="12">Easy</option>
                 <option value="21">Normal</option>
                 <option value="36">Hard</option>
@@ -91,7 +65,7 @@
                 <th>Your time</th>
               </tr>
               <tr>
-                <td id="time_now">
+                <td class="clock" id="time_now">
                     <span id="hour">00</span>:
                     <span id="minute">00</span>:
                     <span id="second">00</span>
@@ -107,46 +81,112 @@
               </tr>
               <tr>
                 <td>1</td>
-                <td></td>
+                <td class="clock" id="record-1">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
               <tr>
                 <td>2</td>
-                <td></td>
+                <td class="clock" id="record-2">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
               <tr>
                 <td>3</td>
-                <td></td>
+                <td class="clock" id="record-3">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
               <tr>
                 <td>4</td>
-                <td></td>
+                <td class="clock" id="record-4">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
               <tr>
                 <td>5</td>
-                <td></td>
+                <td class="clock" id="record-5">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
               <tr>
                 <td>6</td>
-                <td></td>
+                <td class="clock" id="record-6">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
               <tr>
                 <td>7</td>
-                <td></td>
+                <td class="clock" id="record-7">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
               <tr>
                 <td>8</td>
-                <td></td>
+                <td class="clock" id="record-8">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
               <tr>
                 <td>9</td>
-                <td></td>
+                <td class="clock" id="record-9">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
               <tr>
                 <td>10</td>
-                <td></td>
+                <td class="clock" id="record-10">
+                    <span class="hour">00</span>:
+                    <span class="minute">00</span>:
+                    <span class="second">00</span>
+                </td>
               </tr>
             </table>
           </div>
+        </section>
+        <section class="description">
+          <h2>Sudoku game</h2>
+          <p>This game come from Japan and is a mathematical brain teaser.</p>
+          <p>Big square is made from 81 small square fields (9 rows, 9 columns) and it has got two main 9-elements diagonals. Furthermore red lines show additional division by 3x3 squares.</p>
+          <p>The task is filling all the space with digits 1-9 in a such way that in every:</p>
+          <div class="rules">
+            <ul>
+               <li>row,</li>
+               <li>column,</li>
+               <li>main diagonals,</li>
+               <li>3x3 square,</li>
+             </ul>
+            <div class="animations">
+               <div class="anim-click">
+                 <input type="checkbox" id="anim">
+                 <label for="anim">Disable animations </label>             
+               </div>
+               <img src="/row_animation.svg" width="100" id="anim-1" alt="9 rows of sudoku">
+               <img src="/column_animation.svg" width="100" id="anim-2" alt="9 columns of sudoku">
+               <img src="/diagonals_animation.svg" width="100" id="anim-3" alt="2 main diagonals of sudoku">
+               <img src="/squares_animation.svg" width="100" id="anim-4" alt="9 smaller squares of sudoku">
+             </div>
+          </div>
+          <p>none of these digits will be repeated.</p>
+          <p>Example of properly filled board game is below - after click "START" button image will disappear and the sudoku game begun. In "Options menu" you can find type of the game (time on/off) and a few difficulty levels. Number of empty cells (squares) on the board depends on chosen level of the game.</p>
         </section>
         <section class="sudoku">
           <div class="gamespace"></div>
