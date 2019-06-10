@@ -1,7 +1,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: hsl(45, 10%, 85%);
 }
 
 * {
@@ -10,8 +9,9 @@ html, body {
 }
 
 .container {
-  margin-bottom: -20px;
-  background: linear-gradient(0deg, hsl(60, 29%, 55%) 0%, hsl(60, 35%, 51%) 100%);
+  width: 1200px;
+  margin: 0 auto -20px auto;
+  background-color: hsl(45, 15%, 75%);
 }
 
 header, h1, h2 { 
@@ -32,10 +32,11 @@ a {
 }
 
 p {
+  display: inline;
   text-align: justify;
   text-indent: 1em;
-  line-height: 1.5em;
-  margin: 0.2em 0;
+  line-height: 1.25em;
+  margin: 5px 0;
 }
 
 .main-header {
@@ -59,7 +60,7 @@ p {
 }
 
 a > h1 {
-  height: 75px;
+  height: 3em;
   flex-flow: row nowrap;
 }
 
@@ -89,23 +90,26 @@ h1 > img {
 }
 
 main {
-  display: flex;
-  flex-flow: row wrap;
-  padding: 5px 15px;
   margin-bottom: 70px;
 }
 
-/*article {  
-  flex: 1 0 100%;
-}*/
-
-article, .description {
+article, section, .panels {
   display: flex;
   flex-flow: row wrap;
 }
 
+article, .description, .panels {
+  padding: 10px;
+}
+
+.side {
+  flex-basis: 250px;
+}
+
 .description {
-  margin-bottom: 20px;
+  flex: 650px;
+  max-height: 420px;
+  align-content: flex-start;
 }
 
 .rules {
@@ -120,30 +124,16 @@ article, .description {
 }
 
 ul {
-  display: block;
-  width: auto;
-  padding: 0 1.5em 0 2em;
-  margin: 0;
+  width: 170px;
+  padding: 0 1.5em;
 }
 
 li {
   margin: 5px 0;
-  list-style: disc;
-}
-
-.panels, .sudoku {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-sidebar {
-  align-content: flex-start;
 }
 
 .panels {
-  flex-basis: 250px;
   height: auto;
-  padding: 10px;
   background-color: hsl(58, 26%, 70%);
 }
 
@@ -160,56 +150,58 @@ sidebar {
 .options {
   display: flex;
   width: 100%;
-  height: 15%;
+  height: 120px;
   flex-flow: row wrap;
-  margin: 20px 0;
+  align-content: flex-start;
 }
 
-.options p {
-  width: 200px;
-  text-indent: 5px;
-}
-
-input[type='radio'], label > p {
+.game-options {
   display: flex;
-  height: 20px;
-  margin: 0 3px;
+  width: inherit;
+  height: 25px;
   align-items: center;
 }
 
-input[type='radio'] {
-  flex-basis: 7%;
-}
-
-.titles, .level-list {
-  height: 1.5em;
-  font-size: 18px;
+.game-levels, .titles {
+  height: 25px;
+  margin-bottom: 10px;
 }
 
 .titles {
-  display: block;
+  display: flex;
   width: 100%;
   padding-left: 5px;
+  font-size: 18px;
   background: linear-gradient(to right, hsl(46, 14%, 90%) 0%, hsl(58, 25%, 70%) 100%);
 }
 
-.level-list {  
+.level-list {
+  font-size: inherit;
   background-color: hsl(45, 28%, 85%);
 }
 
 .buttons {
+  display: flex;
   height: 50px;
+  width: 100%;
   justify-content: center;
+  align-items: center;
+  margin: 15px 0;
 }
 
 .buttons > button {
   width: 45%;
   height: 100%;
-  margin: 5px;
+  margin: 0 5px;
   border: 3px solid hsl(228, 52%, 40%);
   border-radius: 10px;
   font-size: 28px;
   background:radial-gradient(ellipse at center, rgba(197,208,217,1) 35%, rgba(84,107,255,1) 100%);
+}
+
+.buttons > button:hover {
+  border: 2px solid hsl(228, 52%, 40%);
+  font-size: 24px;
 }
 
 .buttons > button:first-of-type {
@@ -223,8 +215,7 @@ input[type='radio'] {
 .sudoku {
   height: 400px;
   width: 400px;
-  align-self: center;
-  margin: 0 auto;
+  margin: 10px;
 }
 
 .gamespace {
@@ -252,6 +243,10 @@ input[type='radio'] {
   font-size: 1.5em;  
 }
 
+.squares > input[type='text'] {
+  border-width: 0px;
+}
+
 table {
   width: 100%;
   margin: 10px auto;
@@ -271,7 +266,7 @@ td {
   border: 1px solid black;  
 }
 
-.timer { 
+.timer, .clock { 
   height: auto;  
   text-align: center;
   border: 1px solid black;
@@ -297,8 +292,8 @@ footer > span {
   padding: 5px;
   font-style: italic;
 }
-
-@media screen and (min-width: 521px) and (max-width: 720px) {
+/*
+@media screen and (min-width: 400px) and (max-width: 720px) {
   body, html {
     font-size: 14px;
   }
@@ -370,19 +365,27 @@ footer > span {
   footer {
     height: 50px;
   }
-}
+}*/
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 400px) {
   body, html {
     font-size: 12px;
+  }
+  
+  .container {
+    width: auto;
   }
   
   .main-header {
     height: 80px;
   }
   
+  a > h1 {
+    height: 60px;
+  }
+  
   .game-name {
-    font-size: 55px;
+    font-size: 60px;
   }
 
   .hide-show {
@@ -393,16 +396,27 @@ footer > span {
     font-size: 1.5em;
   }
 
+  .description {
+    min-height: 550px;
+  }
+  
   .rules {
-    margin: 5px 0;
+    margin: 0;
+  }
+  
+  .side {
+    flex-flow: row nowrap;
+    flex: 50%;
+    order: 1;
   }
   
   .panels {
     flex-basis: 180px;
-    max-width: 50%;
     padding: 5px;
-    margin: 0 auto;
-    order: 1;
+  }
+  
+  .options {
+    height: 80px;
   }
   
   .titles, .level-list, th, td, .panels > h2 {
@@ -411,18 +425,19 @@ footer > span {
   
   .game-levels, .titles {
     height: 20px;
-    margin-bottom: 10px;
   }
       
   .buttons {
-    width: 100%;
     height: 45px;
   }
     
   .buttons > button {
-    margin: 5px;
-    width: 40%;
+    border-width: 2px;
     font-size: 20px;
+  }
+  
+  .buttons > button:hover {
+    font-size: 18px;
   }
   
   .sudoku {
