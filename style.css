@@ -9,18 +9,15 @@ html, body {
 }
 
 .container {
-  width: 1200px;
-  margin: 0 auto -20px auto;
-  background-color: hsl(45, 15%, 75%);
-}
-
-header, h1, h2 { 
-  width: 100%;
+	width: 1020px;
+  margin: 0 auto -20px;
+  background: linear-gradient(0deg, hsl(60, 29%, 55%) 0%, hsl(60, 35%, 51%) 100%);
 }
 
 h1, h2 { 
+  width: 100%;
   margin: 5px 0;
-  color: hsl(283, 100%, 20%);
+  color: hsl(283, 100%, 20%);	
 }
 
 h1 {font-size: 2em;}
@@ -32,11 +29,10 @@ a {
 }
 
 p {
-  display: inline;
   text-align: justify;
   text-indent: 1em;
-  line-height: 1.25em;
-  margin: 5px 0;
+  line-height: 1.5em;
+  margin: 0.25em 0;
 }
 
 .main-header {
@@ -60,7 +56,7 @@ p {
 }
 
 a > h1 {
-  height: 3em;
+  height: 80px;
   flex-flow: row nowrap;
 }
 
@@ -70,8 +66,8 @@ h1 > img {
 
 .game-name {
   display: flex;
-  padding-left: 15px;
-  font-size: 75px;
+  padding-left: 20px;
+  font-size: 90px;
 }
 
 .hide-show {
@@ -90,26 +86,19 @@ h1 > img {
 }
 
 main {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 5px 15px;
   margin-bottom: 70px;
 }
 
-article, section, .panels {
+article, .description {
   display: flex;
   flex-flow: row wrap;
 }
 
-article, .description, .panels {
-  padding: 10px;
-}
-
-.side {
-  flex-basis: 250px;
-}
-
 .description {
-  flex: 650px;
-  max-height: 420px;
-  align-content: flex-start;
+  margin-bottom: 20px;
 }
 
 .rules {
@@ -124,16 +113,30 @@ article, .description, .panels {
 }
 
 ul {
-  width: 170px;
-  padding: 0 1.5em;
+  display: block;
+  width: auto;
+  padding: 0 1.5em 0 2em;
+  margin: 0;
 }
 
 li {
   margin: 5px 0;
+  list-style: disc;
+}
+
+.panels, .sudoku {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+sidebar {
+  align-content: flex-start;
 }
 
 .panels {
+  flex-basis: 260px;
   height: auto;
+  padding: 10px 15px;
   background-color: hsl(58, 26%, 70%);
 }
 
@@ -150,58 +153,56 @@ li {
 .options {
   display: flex;
   width: 100%;
-  height: 120px;
+  height: 15%;
   flex-flow: row wrap;
-  align-content: flex-start;
+  margin: 20px 0;
 }
 
-.game-options {
+.options p {
+  width: 200px;
+  text-indent: 5px;
+}
+
+input[type='radio'], label > p {
   display: flex;
-  width: inherit;
-  height: 25px;
+  height: 20px;
+  margin: 0 3px;
   align-items: center;
 }
 
-.game-levels, .titles {
-  height: 25px;
-  margin-bottom: 10px;
+input[type='radio'] {
+  flex-basis: 7%;
+}
+
+.titles, .level-list {
+  height: 1.5em;
+  font-size: 18px;
 }
 
 .titles {
-  display: flex;
+  display: block;
   width: 100%;
   padding-left: 5px;
-  font-size: 18px;
   background: linear-gradient(to right, hsl(46, 14%, 90%) 0%, hsl(58, 25%, 70%) 100%);
 }
 
-.level-list {
-  font-size: inherit;
+.level-list {  
   background-color: hsl(45, 28%, 85%);
 }
 
 .buttons {
-  display: flex;
   height: 50px;
-  width: 100%;
   justify-content: center;
-  align-items: center;
-  margin: 15px 0;
 }
 
 .buttons > button {
   width: 45%;
   height: 100%;
-  margin: 0 5px;
+  margin: 5px;
   border: 3px solid hsl(228, 52%, 40%);
   border-radius: 10px;
   font-size: 28px;
   background:radial-gradient(ellipse at center, rgba(197,208,217,1) 35%, rgba(84,107,255,1) 100%);
-}
-
-.buttons > button:hover {
-  border: 2px solid hsl(228, 52%, 40%);
-  font-size: 24px;
 }
 
 .buttons > button:first-of-type {
@@ -213,24 +214,26 @@ li {
 }
 
 .sudoku {
-  height: 400px;
-  width: 400px;
-  margin: 10px;
+  height: 500px;
+  width: 500px;
+  align-self: center;
+  margin: 0 auto;
 }
 
-.gamespace {
-  display: flex; 
-  height: 100%; 
-  width: 100%; 
+.gamespace, .squares {
+	display: flex;
   flex-flow: row wrap;
   justify-content: center;
+}
+
+.gamespace {   
+  height: 100%; 
+  width: 100%; 
   background-image: url(/example.png);
+	background-size: cover;
 }
 
 .squares {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
   height: calc( 100% / 9 ); 
   width: calc( 100% / 9 );
   border: thin solid black;
@@ -241,10 +244,6 @@ li {
   display: flex;
   align-self: center;
   font-size: 1.5em;  
-}
-
-.squares > input[type='text'] {
-  border-width: 0px;
 }
 
 table {
@@ -266,7 +265,7 @@ td {
   border: 1px solid black;  
 }
 
-.timer, .clock { 
+.timer { 
   height: auto;  
   text-align: center;
   border: 1px solid black;
@@ -292,14 +291,57 @@ footer > span {
   padding: 5px;
   font-style: italic;
 }
-/*
-@media screen and (min-width: 400px) and (max-width: 720px) {
+
+@media screen and (min-width: 720px) and (max-width: 1020px) {
+	.container {
+		width: 100%;
+	}
+	
+	main {
+		padding: 5px 10px 5px 0;
+	}
+
+	.description {
+		flex: 60%;
+		padding: 10px;
+		order: 2;
+	}
+
+	.panels {		
+		width: 200px;
+		padding: 8px;
+	}
+	
+	sidebar {
+		order: 1;
+	}
+	
+	.sudoku + .panels {
+		order: 3;
+	}
+	
+	.sudoku {
+		height: 400px;
+		width: 400px;
+		order: 4;
+	}
+	
+	.short {
+		display: none;		
+	}	
+}
+
+@media screen and (min-width: 480px) and (max-width: 720px) {
   body, html {
     font-size: 14px;
   }
-    
+  
+	.container {
+		width: 100%;
+	}
+	
   .main-header {
-    height: 90px;
+    height: 100px;
   }
   
   .game-name {
@@ -328,7 +370,8 @@ footer > span {
   }
 
   .panels {
-    width: 200px;
+		width: 30%;
+    min-width: 120px;padding: 10px 5px;
   }
   
   .panels > h2 {
@@ -336,12 +379,12 @@ footer > span {
   }
   
   .sudoku {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
   }
   
   .gamespace {    
-    background-image: url(/example-300px.png);
+    background-image: url(/example.png);
   }
   
   input[type='radio'] {
@@ -365,27 +408,19 @@ footer > span {
   footer {
     height: 50px;
   }
-}*/
+}
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
   body, html {
     font-size: 12px;
-  }
-  
-  .container {
-    width: auto;
   }
   
   .main-header {
     height: 80px;
   }
   
-  a > h1 {
-    height: 60px;
-  }
-  
   .game-name {
-    font-size: 60px;
+    font-size: 55px;
   }
 
   .hide-show {
@@ -396,27 +431,16 @@ footer > span {
     font-size: 1.5em;
   }
 
-  .description {
-    min-height: 550px;
-  }
-  
   .rules {
-    margin: 0;
-  }
-  
-  .side {
-    flex-flow: row nowrap;
-    flex: 50%;
-    order: 1;
+    margin: 5px 0;
   }
   
   .panels {
     flex-basis: 180px;
+    max-width: 50%;
     padding: 5px;
-  }
-  
-  .options {
-    height: 80px;
+    margin: 0 auto;
+    order: 1;
   }
   
   .titles, .level-list, th, td, .panels > h2 {
@@ -425,19 +449,18 @@ footer > span {
   
   .game-levels, .titles {
     height: 20px;
+    margin-bottom: 10px;
   }
       
   .buttons {
+    width: 100%;
     height: 45px;
   }
     
   .buttons > button {
-    border-width: 2px;
+    margin: 5px;
+    width: 40%;
     font-size: 20px;
-  }
-  
-  .buttons > button:hover {
-    font-size: 18px;
   }
   
   .sudoku {
