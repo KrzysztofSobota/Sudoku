@@ -85,8 +85,8 @@ function Sudoku() {
   
 
 // Check clicked type of checkbox
-  let fun = document.querySelector('#opt1');
-  let record = document.querySelector('#opt2');
+  let fun = document.querySelector('#timeOff');
+  let record = document.querySelector('#timeOn');
 
 // Choose type of game
   function GameType() {
