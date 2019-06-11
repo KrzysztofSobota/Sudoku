@@ -1,7 +1,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: hsl(45, 10%, 85%);
 }
 
 * {
@@ -10,17 +9,15 @@ html, body {
 }
 
 .container {
-  margin-bottom: -20px;
+	width: 1020px;
+  margin: 0 auto -20px;
   background: linear-gradient(0deg, hsl(60, 29%, 55%) 0%, hsl(60, 35%, 51%) 100%);
 }
 
-header, h1, h2 { 
-  width: 100%;
-}
-
 h1, h2 { 
+  width: 100%;
   margin: 5px 0;
-  color: hsl(283, 100%, 20%);
+  color: hsl(283, 100%, 20%);	
 }
 
 h1 {font-size: 2em;}
@@ -35,7 +32,7 @@ p {
   text-align: justify;
   text-indent: 1em;
   line-height: 1.5em;
-  margin: 0.2em 0;
+  margin: 0.25em 0;
 }
 
 .main-header {
@@ -59,7 +56,7 @@ p {
 }
 
 a > h1 {
-  height: 75px;
+  height: 80px;
   flex-flow: row nowrap;
 }
 
@@ -69,8 +66,8 @@ h1 > img {
 
 .game-name {
   display: flex;
-  padding-left: 15px;
-  font-size: 75px;
+  padding-left: 20px;
+  font-size: 90px;
 }
 
 .hide-show {
@@ -94,10 +91,6 @@ main {
   padding: 5px 15px;
   margin-bottom: 70px;
 }
-
-/*article {  
-  flex: 1 0 100%;
-}*/
 
 article, .description {
   display: flex;
@@ -141,9 +134,9 @@ sidebar {
 }
 
 .panels {
-  flex-basis: 250px;
+  flex-basis: 260px;
   height: auto;
-  padding: 10px;
+  padding: 10px 15px;
   background-color: hsl(58, 26%, 70%);
 }
 
@@ -221,25 +214,26 @@ input[type='radio'] {
 }
 
 .sudoku {
-  height: 400px;
-  width: 400px;
+  height: 500px;
+  width: 500px;
   align-self: center;
   margin: 0 auto;
 }
 
-.gamespace {
-  display: flex; 
-  height: 100%; 
-  width: 100%; 
+.gamespace, .squares {
+	display: flex;
   flex-flow: row wrap;
   justify-content: center;
+}
+
+.gamespace {   
+  height: 100%; 
+  width: 100%; 
   background-image: url(/example.png);
+	background-size: cover;
 }
 
 .squares {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
   height: calc( 100% / 9 ); 
   width: calc( 100% / 9 );
   border: thin solid black;
@@ -298,13 +292,56 @@ footer > span {
   font-style: italic;
 }
 
-@media screen and (min-width: 521px) and (max-width: 720px) {
+@media screen and (min-width: 720px) and (max-width: 1020px) {
+	.container {
+		width: 100%;
+	}
+	
+	main {
+		padding: 5px 10px 5px 0;
+	}
+
+	.description {
+		flex: 60%;
+		padding: 10px;
+		order: 2;
+	}
+
+	.panels {		
+		width: 200px;
+		padding: 8px;
+	}
+	
+	sidebar {
+		order: 1;
+	}
+	
+	.sudoku + .panels {
+		order: 3;
+	}
+	
+	.sudoku {
+		height: 400px;
+		width: 400px;
+		order: 4;
+	}
+	
+	.short {
+		display: none;		
+	}	
+}
+
+@media screen and (min-width: 480px) and (max-width: 720px) {
   body, html {
     font-size: 14px;
   }
-    
+  
+	.container {
+		width: 100%;
+	}
+	
   .main-header {
-    height: 90px;
+    height: 100px;
   }
   
   .game-name {
@@ -333,7 +370,8 @@ footer > span {
   }
 
   .panels {
-    width: 200px;
+		width: 30%;
+    min-width: 120px;padding: 10px 5px;
   }
   
   .panels > h2 {
@@ -341,12 +379,12 @@ footer > span {
   }
   
   .sudoku {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
   }
   
   .gamespace {    
-    background-image: url(/example-300px.png);
+    background-image: url(/example.png);
   }
   
   input[type='radio'] {
@@ -372,7 +410,7 @@ footer > span {
   }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 480px) {
   body, html {
     font-size: 12px;
   }
