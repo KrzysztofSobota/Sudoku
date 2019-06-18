@@ -15,7 +15,7 @@
    <header class="main-header">
       <a href="">
         <h1>
-          <img src="/sudoku_gameboard.svg" height="70" alt="">
+          <img src="/sudoku_gameboard.svg" width="80" alt="">
           <span class="game-name">Sudoku</span>
         </h1>
       </a>
@@ -49,9 +49,9 @@
          <span>none of these digits will be repeated.</span>
          <p>Example of properly filled board game is below - after click "START" button image will disappear and the sudoku game begun. In "Options menu" you can find type of the game (time on/off) and a few difficulty levels. Number of empty cells (squares) on the board depends on chosen level of the game.</p>
         </section>
-        <sidebar class="panels">
+        <section class="panel menu">
           <h2>Options menu</h2>
-          <div class="options">
+          <div class="options time">
             <span class="titles">You want to play for:</span>
             <form action="">
 							<input type="radio" name="gameopt" id="timeOff">
@@ -75,17 +75,17 @@
           <p>Time is counting from the moment of click PLAY button.</p>
           <div class="options buttons">
             <button id="play">
-              <span>PLAY</span>
+              <span class="click play">PLAY</span>
             </button>
             <button id="reset">
-              <span>RESET</span>
+              <span class="click reset">RESET</span>
             </button>
           </div>
-        </sidebar>
+        </section>
         <section class="sudoku">
           <div class="gamespace"></div>
         </section>
-        <section class="panels" id="results">
+        <section class="panel tabels" id="results">
           <h2>Time and ranking</h2>
           <table class="timer">
             <tr>

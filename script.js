@@ -5,12 +5,12 @@ function Sudoku() {
   let game = document.querySelector('.gamespace');
   
 //  Animations on/off
-  let animClick = document.querySelector('#anim');
+  /*let animClick = document.querySelector('#anim');
   animClick.addEventListener('click', function animOnOff() {
     if (animClick.checked == true) {
       document.querySelectorAll('.animations > img').src = '/animationOff.png';      
     }
-  }, false);
+  }, false);*/
   
   for (let j=1; j<=81; j++) {
     game.insertAdjacentHTML('afterbegin', `<div class="squares"><span></span></div>`);
@@ -158,7 +158,7 @@ function Sudoku() {
       }
     
       if (indexNumber = undefined) {
-        game.src = '/example.png';
+        game.src = '/example.svg';
         return ;
       }
     alert(`${indexNumber}`);
@@ -188,7 +188,7 @@ function Sudoku() {
   btnReset.addEventListener('click', function reset(tick) {
       window.clearInterval(tick(Date.now()));
 
-    document.querySelector('.gamespace').style.backgroundImage = 'url(/example.png)';
+    document.querySelector('.gamespace').style.backgroundImage = 'url(/example.svg)';
     }, {once: true});  
   
 }
