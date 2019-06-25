@@ -3,7 +3,7 @@
 
 function Sudoku() {
   let game = document.querySelector('.gamespace');
-  
+	
 //  Animations on/off
   /*let animClick = document.querySelector('#anim');
   animClick.addEventListener('click', function animOnOff() {
@@ -12,32 +12,54 @@ function Sudoku() {
     }
   }, false);*/
   
-  for (let j=1; j<=81; j++) {
+	/* Fill gameboard with 81 (9x9) small squares */
+  for (let j = 1; j <= 81; j++) {
     game.insertAdjacentHTML('afterbegin', `<div class="squares"><span></span></div>`);
   }
-  
-  let sortArray = [];  
+	
+	let square = document.querySelectorAll('.squares');
+	
+	/* 4 red borders divide board into 9 squares */
+	function redBorders() {
+		for (let i = 3; i <= 81;) {
+			square[i].style.borderLeft = '3px solid red';
+			square[i + 3].style.borderLeft = '3px solid red';
+			i = i + 9;
+		}
+		for (let i = 27; i <= 35; i++) {
+			square[i].style.borderTop = '3px solid red';
+			square[i + 27].style.borderTop = '3px solid red';
+		}
+	};
+	
+	redBorders();
+	
+  let sortArray = [];
+	
   function sorting() {
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    for (let i = 1; i <= 9; i++) {
-      // random index 'a' number from 'numbers' array
-      let a = Math.round(Math.random() * (numbers.length - 1)); 
-      
-      // get digit from index position
-      let b = numbers[a]; 
-      sortArray.push(b);
-      numbers.splice(a, 1);
-    }
-      
+		let n = numbers.length;
+			for (let i = 1; i <= n; ) {
+				// random index 'a' number from 'numbers' array
+				let a = Math.floor(Math.random() * n); 
+
+				// get digit from index position
+				let b = numbers[a]; 
+				sortArray.push(b);
+				numbers.splice(a, 1);
+				
+				n--;
+			}
+    console.log(sortArray);
     return sortArray;
   }
 
-  let mixed = sorting();
-
 //  Make 27 part of small arrays
   let fullArray = [];
-  function arrayParts(mixed) {
-   
+	
+  function arrayParts() {
+    let mixed = sorting();
+		
     let [i1, i2, i3, ...others1] = sortArray;
     let [ , , , i4, i5, i6, ...others2] = sortArray;
     let [ , , , , , , i7, i8, i9] = sortArray;
@@ -59,7 +81,7 @@ function Sudoku() {
     return fullArray;
   }
   
-  arrayParts(mixed);
+  arrayParts();
   
 //  Check correct sum for all digits and 2 main diagonals before inside them on the board
   let sumDigits = fullArray.reduce(function(previousValue, currentValue, index, array) {
@@ -144,13 +166,28 @@ function Sudoku() {
   function insertDigits(n) {
     let cellDigits = document.querySelectorAll('.squares > span');
     let indexArray = [];
-    let indexNumber = undefined;  
-      for (let i = 0; i < n; i++) {
-        indexNumber = Math.floor(Math.random() * (fullArray.length - i));
-        indexArray.push(indexNumber);
-      }
-      
+    
+		/* Taking index numbers - it is n-indexes loop, where 'n' depends on game level */
+		let indexNumber = undefined;
+			for (let i = 1; i <= n; i++) {
+				// random index number from 'fullArray' array
+				indexNumber = Math.floor(Math.random() * fullArray.length); 
+
+				// get digit 1-9 from index position
+				let digit = fullArray[indexNumber]; 
+				indexArray.push(indexNumber);
+				fullArray.splice(indexNumber, 1);
+				
+				
+			}
+		
+		let fullArrayValues = Array.from(fullArray.values());
+		let fullArrayKeys = Array.from(fullArray.keys());
+		console.log(indexArray);console.log(fullArray);
+		
       for (let k = 0; k < fullArray.length; k++) {
+				/*let indexes = Array.from(indexArray.keys());
+				console.log(indexes);*/
         if (k == n) {
           cellDigits[indexNumber].textContent = '';        
         }

@@ -250,7 +250,7 @@ input[type=radio]:checked + .gameopt:before {
 	height: 10vw;
 	width: 10vw;
 	border: thin solid black;
-	background-color: hsl(52, 37%, 60%);
+	background-color: rgb(220, 215, 199);
 }
 
 .squares > span {
@@ -307,28 +307,15 @@ footer > span {
 	font-style: italic;
 }
 
-@media screen and (min-width: 300px) and (max-width: 340px) {	
+@media screen and (min-width: 300px) and (max-width: 360px) {	
 	.hide-show > span {
 		font-size: 1.4rem;
 	}	
 }
 
-@media screen and (min-width: 340px) and (max-width: 480px) {	
-	.options:not(.buttons) {
-		width: 50%;
-		float: left;
-	}	
-}
-
 @media screen and (min-width: 300px) and (max-width: 480px) {
-	.panel p {
-		font-size: 1.25rem;
-	}
-
-	table {
-		display: inline-table;
-		width: 45%;		
-		margin: 0 auto;
+	.panel p, table {
+		font-size: 1.125rem;
 	}
 	
 	.short {
@@ -336,11 +323,22 @@ footer > span {
 	}
 }
 
+@media screen and (min-width: 360px) and (max-width: 480px) {
+	.gameopt {
+		font-size: 1.125rem;
+	}
+	
+	.options:not(.buttons) {
+		width: 50%;
+		float: left;
+	}	
+}
+
 @media screen and (min-width: 480px) and (max-width: 720px) {
 	body, html {
 		font-size: 14px;
 	}
-
+	
 	main {
 		padding: 10px;
 	}
@@ -354,21 +352,23 @@ footer > span {
 	}
 
 	.buttons > button {
-		width: 90px;
-		margin: 5px 4px;
+		width: 95px;
+		margin: 5px;
 	}
 
 	.buttons span {
-		font-size: 24px;
+		font-size: 26px;
 	}
 
 	.menu {
 		border-right: thin solid hsl(43, 80%, 32%);
 		order: 2;
 	}
-
+	
 	.options:not(.buttons) {
-		min-height: 80px;		
+		width: auto;
+		min-height: 75px;
+		clear: both;
 	}
 
 	.tabels {
@@ -417,8 +417,6 @@ footer > span {
 	.squares {
 		height: calc(100% / 9);
 		width: calc(100% / 9);
-		border: thin solid black;
-		background-color: hsl(52, 37%, 60%);
 	}
 
 	.options:not(.buttons) {
@@ -444,7 +442,7 @@ footer > span {
 	}
 }
 
-@media screen and (min-width: 720px) and (max-width: 960px) {
+@media screen and (min-width: 720px) and (max-width: 959px) {
 	.hide-show {
 		display: none;
 	}
