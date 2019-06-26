@@ -14,26 +14,33 @@ function Sudoku() {
   
 	/* Fill gameboard with 81 (9x9) small squares */
   for (let j = 1; j <= 81; j++) {
-    game.insertAdjacentHTML('afterbegin', `<div class="squares"><span></span></div>`);
+    game.insertAdjacentHTML('afterbegin', `<div class="squares"><span class="num"></span></div>`);
   }
 	
 	let square = document.querySelectorAll('.squares');
 	
 	/* 4 red borders divide board into 9 squares */
 	function redBorders() {
-		for (let i = 3; i <= 81;) {
-			square[i].style.borderLeft = '3px solid red';
-			square[i + 3].style.borderLeft = '3px solid red';
+		for (let i = 2; i <= 81;) {
+			square[i].style.borderRight = '2px solid red';
+			square[i + 3].style.borderRight = '2px solid red';
+			square[i + 1].style.borderLeft = '2px solid red';
+			square[i + 4].style.borderLeft = '2px solid red';
 			i = i + 9;
 		}
+		for (let i = 18; i <= 26; i++) {
+			square[i].style.borderBottom = '2px solid red';	
+			square[i + 27].style.borderBottom = '2px solid red';
+		}
 		for (let i = 27; i <= 35; i++) {
-			square[i].style.borderTop = '3px solid red';
-			square[i + 27].style.borderTop = '3px solid red';
+			square[i].style.borderTop = '2px solid red';
+			square[i + 27].style.borderTop = '2px solid red';
 		}
 	};
 	
 	redBorders();
 	
+	/* 'sortArray' is the first (base) 9-elements array and the most important part of the all code */
   let sortArray = [];
 	
   function sorting() {
@@ -103,8 +110,7 @@ function Sudoku() {
         if (leftResult != 45 || rightResult != 45) {
           alert('Wrong digits!');
         };
-    };
-  
+    };  
 
 // Check clicked type of checkbox
   let fun = document.querySelector('#timeOff');
@@ -165,40 +171,42 @@ function Sudoku() {
 //  Put selected number of digits (n) into the board
   function insertDigits(n) {
     let cellDigits = document.querySelectorAll('.squares > span');
-    let indexArray = [];
     
 		/* Taking index numbers - it is n-indexes loop, where 'n' depends on game level */
 		let indexNumber = undefined;
-			for (let i = 1; i <= n; i++) {
-				// random index number from 'fullArray' array
-				indexNumber = Math.floor(Math.random() * fullArray.length); 
-
-				// get digit 1-9 from index position
-				let digit = fullArray[indexNumber]; 
-				indexArray.push(indexNumber);
-				fullArray.splice(indexNumber, 1);
-				
-				
-			}
-		
+		let indexArray = Array.from(fullArray);
 		let fullArrayValues = Array.from(fullArray.values());
 		let fullArrayKeys = Array.from(fullArray.keys());
-		console.log(indexArray);console.log(fullArray);
-		
-      for (let k = 0; k < fullArray.length; k++) {
-				/*let indexes = Array.from(indexArray.keys());
-				console.log(indexes);*/
-        if (k == n) {
-          cellDigits[indexNumber].textContent = '';        
-        }
-        cellDigits[k].textContent = `${fullArray[k]}`;
-      }
+		/*
+		console.log(fullArrayKeys);console.log(fullArrayValues);*/
+		let tempValue = [];
+		let k = indexArray.length
+		for (let i = 1; i <= n;) {
+			/* random index number from 'fullArray' array, then get digit 1-9 from index position -> fullArray[indexNumber]*/
+			indexNumber = Math.floor(Math.random() * k);
+				
+			let digit = fullArray[indexNumber];
+			
+		  tempValue.push(indexNumber, digit);
+			indexArray.splice(indexNumber, 1);
+			
+			/* We remove only digits, so some */
+			if (Number.isInteger(digit) == true) {
+				 i++;
+			}	
+				/*cellDigits[indexNumber].textContent = '';
+				cellDigits[indexNumber].textContent = '';*/
+				square[indexNumber].insertAdjacentHTML('afterbegin', `<input type="text" class="digit" maxlength="1" size="2">`);
+			console.log(indexNumber);	
+			
+			k--;
+		}		
     
       if (indexNumber = undefined) {
         game.src = '/example.svg';
         return ;
       }
-    alert(`${indexNumber}`);
+    
   }
 
   insertDigits(n);

@@ -155,35 +155,33 @@ li {
 
 form {
 	max-width: 15rem;
-	height: auto;
+	line-height: 1.75rem;
 }
 
-.gameopt {
-	display: inline-block;
-	height: 1rem;
+input[type=radio]{
+  /* Hide original inputs */
+  visibility: hidden;
+  position: absolute;
+}
+
+.click-area {
+	height: 26px;
+}
+
+input[type=radio] + label:before{
+  content: " ";
+  display: inline-block;
+	height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  vertical-align: middle;
+  border: 1px solid #777;
+  border-radius: 50%;
 	cursor: pointer;
-	line-height: normal;
 }
 
-input[type='radio'] {
-	display: none;
-}
-
-.gameopt:before {
-	content: "";
-	display: inline-flex;
-	width: 1.125rem;
-	height: 1.125rem;
-	margin-right: 4px;
-	justify-content: center;
-	background-color: #7248B2;
-	color: #fcfc06;
-	font-size: 30px;
-	border-radius: 50%;
-}
-
-input[type=radio]:checked + .gameopt:before {
-	content: "\2022";
+input[type=radio]:checked + label:before {
+	background: gold;
 }
 
 .level-list, th, td, option {
@@ -250,13 +248,25 @@ input[type=radio]:checked + .gameopt:before {
 	height: 10vw;
 	width: 10vw;
 	border: thin solid black;
-	background-color: rgb(220, 215, 199);
+	background-color: hsl(58, 25%, 70%);;
 }
 
 .squares > span {
 	display: flex;
 	align-self: center;
 	font-size: 1.75rem;
+}
+
+.digit {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	text-align: center;
+	font-size: 1.75rem;
+}
+
+.digit:focus, .digit:hover {
+	background-color: aquamarine;
 }
 
 table {

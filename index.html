@@ -54,10 +54,14 @@
           <div class="options time">
             <span class="titles">You want to play for:</span>
             <form action="">
-							<input type="radio" name="gameopt" id="timeOff">
-							<label class="gameopt" for="timeOff">fun only (time is <b>off</b>)</label>
-							<input type="radio" name="gameopt" id="timeOn">
-							<label class="gameopt" for="timeOn">record (time is <b>on</b>)</label>            	
+							<div class="click-area">
+								<input type="radio" name="gameopt" id="timeOff">
+								<label class="gameopt" for="timeOff">fun only (time is <b>off</b>)</label>								
+							</div>
+							<div class="click-area">
+								<input type="radio" name="gameopt" id="timeOn">
+								<label class="gameopt" for="timeOn">record (time is <b>on</b>)</label>
+							</div>
             </form>
           </div>
           <div class="options game-levels">
@@ -66,9 +70,9 @@
             </label>
             <select class="level-list" name="level-list" id="level-list">
               <option value="" selected>Click here</option>
-              <option value="12">Easy</option>
-              <option value="21">Normal</option>
-              <option value="36">Hard</option>
+              <option value="18">Easy</option>
+              <option value="27">Normal</option>
+              <option value="40">Hard</option>
               <option value="54">Very hard</option>
             </select>
           </div>
