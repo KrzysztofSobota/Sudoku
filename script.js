@@ -180,33 +180,35 @@ function Sudoku() {
 		/*
 		console.log(fullArrayKeys);console.log(fullArrayValues);*/
 		let tempValue = [];
-		let k = indexArray.length
-		for (let i = 1; i <= n;) {
+		let cellValue = indexArray[indexNumber];
+		let noRepeatArray = [];
+		let k = 0;
+		do {
 			/* random index number from 'fullArray' array, then get digit 1-9 from index position -> fullArray[indexNumber]*/
-			indexNumber = Math.floor(Math.random() * k);
-				
-			let digit = fullArray[indexNumber];
+			indexNumber = Math.floor(Math.random() * fullArray.length);
+			indexArray.splice(indexNumber, 1, '');
+			tempValue.push(indexNumber);
 			
-		  tempValue.push(indexNumber, digit);
-			indexArray.splice(indexNumber, 1);
 			
-			/* We remove only digits, so some */
-			if (Number.isInteger(digit) == true) {
-				 i++;
-			}	
-				/*cellDigits[indexNumber].textContent = '';
-				cellDigits[indexNumber].textContent = '';*/
-				square[indexNumber].insertAdjacentHTML('afterbegin', `<input type="text" class="digit" maxlength="1" size="2">`);
-			console.log(indexNumber);	
+			noRepeatArray = [ ...new Set(tempValue) ];
+			k = noRepeatArray.length;
 			
-			k--;
-		}		
+		
+			
+		} while (k < n);	
     
+		function fill() {
+			for (let i = 0; i < n; i++) {
+				square[noRepeatArray[i]].insertAdjacentHTML('afterbegin', `<input type="text" class="digit" maxlength="1" size="2">`);
+			}			
+		}
+		
+		fill();
+		
       if (indexNumber = undefined) {
         game.src = '/example.svg';
         return ;
-      }
-    
+      }    
   }
 
   insertDigits(n);
