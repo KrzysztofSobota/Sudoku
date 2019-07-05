@@ -173,7 +173,8 @@ input[type=radio] + label:before{
   display: inline-block;
 	height: 15px;
   width: 15px;
-  margin-right: 5px;margin-bottom: 2px;
+  margin-right: 5px;
+  margin-bottom: 2px;
   vertical-align: middle;
   border: 1px solid #777;
   border-radius: 50%;
@@ -181,7 +182,7 @@ input[type=radio] + label:before{
 }
 
 input[type=radio]:checked + label:before {
-	background: gold;
+	 background: hsl(51, 100%, 50%); /* gold */
 }
 
 .level-list, th, td, option {

@@ -3,14 +3,6 @@
 
 function Sudoku() {
   let game = document.querySelector('.gamespace');
-	
-//  Animations on/off
-  /*let animClick = document.querySelector('#anim');
-  animClick.addEventListener('click', function animOnOff() {
-    if (animClick.checked == true) {
-      document.querySelectorAll('.animations > img').src = '/animationOff.png';      
-    }
-  }, false);*/
   
 	/* Fill gameboard with 81 (9x9) small squares */
   for (let j = 1; j <= 81; j++) {
@@ -110,12 +102,85 @@ function Sudoku() {
         if (leftResult != 45 || rightResult != 45) {
           alert('Wrong digits!');
         };
-    };  
+    };
 
-// Check clicked type of checkbox
-  let fun = document.querySelector('#timeOff');
-  let record = document.querySelector('#timeOn');
+// Selected number of digits (game level type)
+  let listGroup = document.querySelector('#level-list');
+  function selectedValues() {
+    let listValue = listGroup.value;
+    let testNumber = parseInt(listValue);
 
+    return testNumber;
+  }
+
+  let n = selectedValues();
+  listGroup.addEventListener('change', selectedValues);
+  
+//  Put selected number of digits (n) into the board
+  function insertDigits(n) {
+    
+		/* Taking index numbers - it is n-indexes loop, where 'n' depends on game level */
+    let indexNumber = undefined;
+    
+    let indexArray = Array.from(fullArray); // copy of 'fullArray' to make the operations on it
+       
+		let tempValue = [];
+		let noRepeatArray = [];
+    let k = 0;
+    
+		do {
+			/* random index number from 'fullArray' array, then get digit 1-9 from index position -> fullArray[indexNumber]*/
+			indexNumber = Math.floor(Math.random() * fullArray.length);
+			indexArray.splice(indexNumber, 1, '');
+			tempValue.push(indexNumber);
+			
+			
+			noRepeatArray = [ ...new Set(tempValue) ];
+			k = noRepeatArray.length;
+		} while (k < n);
+        
+
+    /* Insert white/empty area to input digits into the board */
+		function fill() {
+			for (let i = 0; i < n; i++) {
+				square[noRepeatArray[i]].insertAdjacentHTML('afterbegin', `<input type="text" class="digit" maxlength="1" size="2">`);
+			}			
+    }    
+
+		let cellDigits = document.querySelectorAll('.squares > span'); // define space to put 81 digits
+
+    /* Board is filled with digits and some of them are already covered beyond the user sight */
+    function fillBoard() {
+      for (let i = 0; i < indexArray.length; i++) {
+        cellDigits[i].innerHTML = `${indexArray[i]}`;
+      }
+    }
+ 
+    fill();
+    fillBoard();
+		
+		
+      if (indexNumber = undefined) {
+        game.src = '/example.svg';
+        return ;
+      }
+      
+    /* Define 2 variables to compare inserted digits with them positions in original array 'fullArray' */
+		let fullArrayValues = Array.from(fullArray.values());
+    let fullArrayKeys = Array.from(fullArray.keys());    
+		
+    function compare() {
+
+    }
+  }
+  
+/* Sudoku start only when type and level of game are checked */
+      
+
+  // Check clicked type of radiobox
+  let fun = document.getElementById('timeOff');
+  let record = document.getElementById('timeOn');
+    
 // Choose type of game
   function GameType() {
     let timing = undefined;
@@ -129,10 +194,21 @@ function Sudoku() {
     return timing;
   }
 
+
+  function toggleInputs() {
+    
+    GameType();
+    insertDigits(n);
+  }
+
   fun.addEventListener('click', GameType, false);
   record.addEventListener('click', GameType, false);
+    
+  document.querySelector('#play').addEventListener('click', toggleInputs, {once: true});
 
-// Function to use timer
+    
+
+/* Timer */
   const timeIntervals = [
       /* all in milliseconds */
       ["hour", 3600000],
@@ -154,89 +230,13 @@ function Sudoku() {
       }
   };
 
-  let btnStart = document.querySelector('#play');
-
-// Selected number of digits (game level type)
-  let listGroup = document.querySelector('#level-list');
-  function selectedValues() {
-    let listValue = listGroup.value;
-    let testNumber = parseInt(listValue);
-
-    return testNumber;
-  }
-
-  let n = selectedValues();
-  listGroup.addEventListener('change', selectedValues);
   
-//  Put selected number of digits (n) into the board
-  function insertDigits(n) {
-    let cellDigits = document.querySelectorAll('.squares > span');
-    
-		/* Taking index numbers - it is n-indexes loop, where 'n' depends on game level */
-		let indexNumber = undefined;
-		let indexArray = Array.from(fullArray);
-		let fullArrayValues = Array.from(fullArray.values());
-		let fullArrayKeys = Array.from(fullArray.keys());
-		/*
-		console.log(fullArrayKeys);console.log(fullArrayValues);*/
-		let tempValue = [];
-		let cellValue = indexArray[indexNumber];
-		let noRepeatArray = [];
-		let k = 0;
-		do {
-			/* random index number from 'fullArray' array, then get digit 1-9 from index position -> fullArray[indexNumber]*/
-			indexNumber = Math.floor(Math.random() * fullArray.length);
-			indexArray.splice(indexNumber, 1, '');
-			tempValue.push(indexNumber);
-			
-			
-			noRepeatArray = [ ...new Set(tempValue) ];
-			k = noRepeatArray.length;
-			
-		
-			
-		} while (k < n);	
-    
-		function fill() {
-			for (let i = 0; i < n; i++) {
-				square[noRepeatArray[i]].insertAdjacentHTML('afterbegin', `<input type="text" class="digit" maxlength="1" size="2">`);
-			}			
-		}
-		
-		fill();
-		
-      if (indexNumber = undefined) {
-        game.src = '/example.svg';
-        return ;
-      }    
-  }
-
-  insertDigits(n);
-  
-// Sudoku start only when type and level of game are checked
-  btnStart.addEventListener('click', function timer(timing) {
-    GameType();
-    insertDigits(n);
-    if (n > 0) {
-      if (timing = 1) {
-        window.setInterval(tick(Date.now()), 1000);
-      } 
-      else {
-        return alert('?');
-      }    
-    }
-    else {
-      return alert(`${n}`);
-    }
-  }, {once: true});
-
-//  Game reset and timer off
+/*  Game reset and timer off */
   let btnReset = document.querySelector('#reset');
   btnReset.addEventListener('click', function reset(tick) {
-      window.clearInterval(tick(Date.now()));
-
+    window.clearInterval(tick(Date.now()));
     document.querySelector('.gamespace').style.backgroundImage = 'url(/example.svg)';
-    }, {once: true});  
+  }, {once: true});  
   
 }
 
