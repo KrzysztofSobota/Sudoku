@@ -27,8 +27,7 @@
       <article>
         <section class="description">
          <h2>Sudoku game</h2>
-         <p>This game come from Japan and is a mathematical brain teaser.</p>
-         <p>Big square is made from 81 small square fields (9 rows, 9 columns) and it has got two main 9-elements diagonals. Furthermore red lines show additional division by 3x3 squares.</p>
+         <p>This game come from Japan and is a mathematical brain teaser. Big square is made from 81 small square fields (9 rows, 9 columns) and it has got two main 9-elements diagonals. Furthermore red lines show additional division by 3x3 squares.</p>
          <p>The task is filling all the space with digits 1-9 in a such way that in every:</p>
          <div class="rules">
            <ul>
@@ -56,11 +55,11 @@
             <form action="" autocomplete="off">
 							<div class="click-area">
 								<input type="radio" name="gameopt" id="timeOff">
-								<label class="gameopt" for="timeOff">fun only (time is <b>off</b>)</label>								
+								<label class="gameopt" for="timeOff">fun only (time is off)</label>								
 							</div>
 							<div class="click-area">
 								<input type="radio" name="gameopt" id="timeOn">
-								<label class="gameopt" for="timeOn">record (time is <b>on</b>)</label>
+								<label class="gameopt" for="timeOn">record (time is on)</label>
 							</div>
             </form>
           </div>
@@ -81,7 +80,7 @@
             <button id="play">
               <span class="click play">PLAY</span>
             </button>
-            <button id="reset">
+            <button type="reset" id="reset">
               <span class="click reset">RESET</span>
             </button>
           </div>
@@ -92,9 +91,11 @@
         <section class="panel tabels" id="results">
           <h2>Time and ranking</h2>
           <table class="timer">
-            <tr>
-              <th>Your time</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Your time</th>
+              </tr>
+            </thead>            
             <tr>
               <td id="time_now">
                   <span id="hour">00</span>:
