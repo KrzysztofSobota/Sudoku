@@ -39,11 +39,9 @@ function Sudoku() {
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let n = numbers.length;
     for (let i = 1; i <= n;) {
-      // random index 'a' number from 'numbers' array
       let a = Math.floor(Math.random() * n);
-
-      // get digit from index position
       let b = numbers[a];
+
       sortArray.push(b);
       numbers.splice(a, 1);
 
@@ -52,6 +50,7 @@ function Sudoku() {
 
     return sortArray;
   }
+
 
   //  Make 27 part of small arrays
   let fullArray = [];
@@ -62,11 +61,12 @@ function Sudoku() {
     let [i1, i2, i3, ...others1] = sortArray;
     let [, , , i4, i5, i6, ...others2] = sortArray;
     let [, , , , , , i7, i8, i9] = sortArray;
+
     let part1 = [i1, i2, i3];
     let part2 = [i4, i5, i6];
     let part3 = [i7, i8, i9];
 
-    /* All other parts 4-9 are made from parts 1-3 by moving the last element in array to begin (like [a,b,c] -> [c,a,b] -> [b,c,a]). */
+    /* All other part(4-9) are made from part(1-3) by moving the last element in array to begin (like [a,b,c] -> [c,a,b] -> [b,c,a]). */
     let part4 = [i9, i7, i8];
     let part5 = [i3, i1, i2];
     let part6 = [i6, i4, i5];
@@ -123,6 +123,7 @@ function Sudoku() {
   /* Put selected number of digits (n) into the board */
   let noRepeatArray = [];
   let indexArray = Array.from(fullArray); // copy of 'fullArray' to make the operations on it
+
   /* Taking index numbers - it is n-indexes loop, where 'n' depends on game level */
   let indexNumber = undefined;
 
@@ -131,7 +132,6 @@ function Sudoku() {
     let tempArray = [];
     let k = 0;
 
-    console.log(indexArray);
     do {
       /* random index number from 'indexArray' array, then get digit 1-9 from index position -> fullArray[indexNumber]*/
       indexNumber = Math.floor(Math.random() * indexArray.length);
@@ -140,17 +140,17 @@ function Sudoku() {
 
       noRepeatArray = [...new Set(tempArray)];
       k = noRepeatArray.length;
-    } while (k < n);
-  }
+    }
+    while (k < n);
 
-  if (indexNumber = undefined) {
-    game.src = '/example.svg';
   }
-
+  console.log(indexArray);
   insertDigits(n);
 
   /* Insert white/empty area to input digits into the board */
   let noRepeatIndexes = Array.from(noRepeatArray.values());
+
+  console.log(noRepeatIndexes);
 
   function fill() {
     for (let i = 0; i < n; i++) {
@@ -167,48 +167,49 @@ function Sudoku() {
   }
 
   fill();
-  fillBoard();
 
-  /* Define 2 variables to compare inserted digits with them positions in original array 'fullArray' */
-  // let fullArrayValues = Array.from(indexArray.values());
-  // let fullArrayKeys = Array.from(indexArray.keys());    
+  indexNumber == undefined ? game.src = '/example.svg' : fillBoard();
 
 
-  game.addEventListener('click', function(e) {
-    let digitSquare = document.querySelector(`#${e.target.id}`);
+  const getNumber = str => Number(str.match(/\d+/)[0]);
+  const num = event => getNumber(event.target.id);
 
-    let digitId = digitSquare.id;
-    let digit = digitId.replace('pos', '');
-    compareDigit(digit);
+  game.addEventListener('click', compareDigit);
 
-    console.log(digit);
-    return digit;
-  });
+  /* Checking if input digit is exactly the same as in the same position in the fullArray */
+  function compareDigit(event) {
+    let digit = num(event);
+    let digitSquare = document.querySelector(`#pos${digit}`);
+    let newValue = digitSquare.value;
+    let arrayDigit = fullArray[digit];
+
+    /* Input area displays blue/red color after good/bad answer respectively */
+    if (digitSquare != null && newValue != '' && arrayDigit != '') {
+      newValue = digitSquare.value;
+
+      if (newValue == arrayDigit) {
+        digitSquare.style.backgroundColor = 'rgb(110, 144, 247)';
+        // good answer will block the square and reverse font color to black
+        digitSquare.disabled = true;
+        digitSquare.style.color = 'black';
+      } else {
+        digitSquare.style.backgroundColor = 'rgb(219, 63, 63)';
+      }
+    }
+  }
+
+  compareDigit();
 
 
-/* Checking if input digit is exactly the same as in the same position in the fullArray */
-function compareDigit() {
-	let properDigit = fullArray[`#${digit}`];
-	let inputText = properDigit.value;
-
-	
-/* Input area displays blue/red color after good/bad answer respectively */
-	if (inputText == properDigit) {
-		square[`#${digit}`].style.backgroundColor = 'rgb(110, 144, 247)';
-	} else {
-		square[`#${digit}`].style.backgroundColor = 'rgb(219, 63, 63)';
-	}
-}
-
-game.addEventListener('click', compareDigit, false);
-
+  /* 
+  game.addEventListener('click', compareDigit, false);
+  */
 }
 
 
 /* Sudoku start only when type and level of game are checked */
 let btnStart = document.querySelector('#play');
 let btnReset = document.querySelector('#reset');
-
 
 
 /* Timer */
@@ -233,7 +234,9 @@ const tick = (start) => () => {
   }
 };
 
-btnStart.addEventListener('click', toggleTimer);
+btnStart.addEventListener('click', toggleTimer, {
+  once: true
+});
 btnReset.addEventListener('click', toggleTimer);
 
 // Check clicked type of radiobox

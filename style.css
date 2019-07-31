@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
 	margin: 0;
 	padding: 0;
 	font-size: 12px;
@@ -16,8 +15,7 @@ body {
 	/* margin-bottom: 50px; */
 }
 
-h1,
-h2 {
+h1, h2 {
 	width: 100%;
 	margin: 5px 0;
 	color: hsl(283, 100%, 20%);
@@ -51,12 +49,12 @@ p {
 	display: flex;
 }
 
-.main-header>a {
+.main-header > a {
 	width: 100%;
 	height: 100%;
 }
 
-h1>img {
+h1 > img {
 	height: 80px;
 	margin: 0 0.8rem;
 }
@@ -73,18 +71,16 @@ h1>img {
 	background-color: hsl(330, 79%, 25%);
 }
 
-.hide-show>span {
+.hide-show > span {
 	font-size: 1.6rem;
 	color: hsl(42, 94%, 70%);
 }
 
-.hide-show>span:hover {
+.hide-show > span:hover {
 	color: hsl(208, 51%, 83%);
 }
 
-main,
-article,
-.description {
+main, article, .description {
 	display: flex;
 	flex-flow: row wrap;
 }
@@ -125,7 +121,7 @@ li {
 	background-color: hsl(58, 26%, 70%);
 }
 
-.panel>h2 {
+.panel > h2 {
 	display: flex;
 	margin-bottom: 15px;
 	place-content: center;
@@ -134,8 +130,7 @@ li {
 	color: hsl(60, 85%, 50%);
 }
 
-.options,
-.menu>p {
+.options, .menu > p {
 	padding: 0 5px;
 }
 
@@ -170,7 +165,7 @@ input[type=radio] {
 	height: 26px;
 }
 
-input[type=radio]+label:before {
+input[type=radio] + label:before {
 	content: " ";
 	display: inline-block;
 	height: 15px;
@@ -183,15 +178,11 @@ input[type=radio]+label:before {
 	cursor: pointer;
 }
 
-input[type=radio]:checked+label:before {
-	background: hsl(51, 100%, 50%);
-	/* gold */
+input[type=radio]:checked + label:before {
+	background: hsl(51, 100%, 50%); /* gold */
 }
 
-.level-list,
-th,
-td,
-option {
+.level-list, th, td, option {
 	font-size: 1.25rem;
 }
 
@@ -199,41 +190,42 @@ option {
 	display: flex;
 	width: 100%;
 	height: auto;
-	justify-content: center;
-	align-items: center;
+	place-content: center;
 	margin: 15px 0 5px 0;
 }
 
-.buttons>button {
+.buttons > button {
 	margin: 10px 5px;
 	border: 3px solid hsl(228, 52%, 40%);
 	border-radius: 10px;
 	background: radial-gradient(ellipse at center, rgba(197, 208, 217, 1) 35%, rgba(84, 107, 255, 1) 100%);
 }
 
-.buttons>button:hover {
+.buttons > button:hover {
 	border: 3px solid hsl(228, 52%, 60%);
 	background: radial-gradient(ellipse at center, hsl(207, 82%, 83%) 50%, hsl(232, 100%, 55%) 100%);
 }
 
 .click {
 	display: inline-flex;
-	font-size: 2rem;
+	width: 6rem;
+	place-content: center;
+	font-size: 2.25rem;
 	padding: 3px 0;
 }
 
 .start {
-	color: #131440;
+	color: hsl(239, 54%, 16%);
 }
 
 .reset {
-	color: #801721;
+	color: hsl(354, 70%, 30%);
 }
 
-.sudoku {
-	margin: 10px auto;
+.sudoku {	
 	height: 90vw;
 	width: 90vw;
+	margin: 10px auto;
 }
 
 .gamespace {
@@ -243,8 +235,7 @@ option {
 	background-size: cover;
 }
 
-.gamespace,
-.squares {
+.gamespace, .squares {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
@@ -255,13 +246,11 @@ option {
 	width: 10vw;
 	border: thin solid black;
 	background-color: hsl(58, 25%, 70%);
-	;
 }
 
-.squares>span {
+.squares > span {
 	display: flex;
 	align-self: center;
-	font-size: 1.75rem;
 }
 
 .digits {
@@ -269,11 +258,13 @@ option {
 	height: 100%;
 	border: 0;
 	text-align: center;
+}
+
+.squares > span, .digits {
 	font-size: 1.75rem;
 }
 
-.digits:focus,
-.digits:hover {
+.digits:focus, .digits:hover {
 	background-color: aquamarine;
 }
 
@@ -309,30 +300,28 @@ td {
 
 footer {
 	position: fixed;
+	height: 4.5rem;
 	width: 100%;
-	height: 50px;
 	bottom: 0;
 	left: 0;
 	font-size: 1.25rem;
 	background-color: hsl(60, 18%, 44%);
 }
 
-footer>span {
+footer > span {
 	display: block;
 	padding: 5px;
 	font-style: italic;
 }
 
 @media screen and (min-width: 300px) and (max-width: 360px) {
-	.hide-show>span {
+	.hide-show > span {
 		font-size: 1.4rem;
 	}
 }
 
 @media screen and (min-width: 300px) and (max-width: 480px) {
-
-	.panel p,
-	table {
+	.panel p, table {
 		font-size: 1.125rem;
 	}
 
@@ -353,9 +342,7 @@ footer>span {
 }
 
 @media screen and (min-width: 480px) and (max-width: 720px) {
-
-	body,
-	html {
+	body, html {
 		font-size: 14px;
 	}
 
@@ -371,7 +358,7 @@ footer>span {
 		margin: 10px 0 5px 0;
 	}
 
-	.buttons>button {
+	.buttons > button {
 		width: 95px;
 		margin: 5px;
 	}
@@ -408,9 +395,7 @@ footer>span {
 }
 
 @media screen and (min-width: 720px) {
-
-	html,
-	body {
+	html,	body {
 		font-size: 16px;
 	}
 
@@ -450,17 +435,9 @@ footer>span {
 		margin: 10px 0;
 	}
 
-	.buttons>button {
+	.buttons > button {
 		width: 125px;
 		margin: 10px;
-	}
-
-	footer {
-		height: 60px;
-	}
-
-	footer>span {
-		padding: 10px;
 	}
 }
 
@@ -473,8 +450,7 @@ footer>span {
 		flex: 1 1 420px;
 	}
 
-	.description,
-	.menu {
+	.description, .menu {
 		margin-bottom: 20px;
 	}
 
@@ -489,24 +465,16 @@ footer>span {
 }
 
 @media screen and (min-width: 960px) {
-
-	.panel,
-	.sudoku {
+	.panel, .sudoku {
 		flex-flow: row wrap;
 	}
 
 	.panel {
-		max-width: 270px;
+		max-width: 300px;
 	}
 
 	.sudoku {
 		width: 540px;
 		height: 540px;
-		margin: 0 10px;
-	}
-
-	.gamespace {
-		height: 100%;
-		width: 100%;
 	}
 }
