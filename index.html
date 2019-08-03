@@ -50,40 +50,53 @@
         </section>
         <section class="panel menu">
           <h2>Options menu</h2>
-          <div class="options time">
-            <span class="titles">You want to play for:</span>
-            <form action="" autocomplete="off">
-							<div class="click-area">
-								<input type="radio" name="gameopt" id="timeOff">
-								<label class="gameopt" for="timeOff">fun only (time is off)</label>								
-							</div>
-							<div class="click-area">
-								<input type="radio" name="gameopt" id="timeOn">
-								<label class="gameopt" for="timeOn">record (time is on)</label>
-							</div>
-            </form>
+          <div class="options">
+            <div class="time">
+              <span class="option-title">You want to play for:</span>
+              <form action=""
+                autocomplete="off">
+                <div class="click-area">
+                  <input type="radio"
+                    name="gameopt"
+                    id="timeOff">
+                  <label class="gameopt"
+                    for="timeOff">fun only (time is off)</label>
+                </div>
+                <div class="click-area">
+                  <input type="radio"
+                    name="gameopt"
+                    id="timeOn">
+                  <label class="gameopt"
+                    for="timeOn">record (time is on)</label>
+                </div>
+              </form>
+            </div>
+            <div class="game-levels">
+              <label for="level-list">
+                <span class="option-title">Levels of sudoku</span>
+              </label>
+              <select class="level-list"
+                name="level-list"
+                id="level-list">
+                <option value=""
+                  selected>Click here</option>
+                <option value="18">Easy</option>
+                <option value="27">Normal</option>
+                <option value="40">Hard</option>
+                <option value="54">Very hard</option>
+              </select>
+            </div>
+            <div class="buttons">
+              <button id="play">
+                <span class="click play">PLAY</span>
+              </button>
+              <button type="reset"
+                id="reset">
+                <span class="click reset">RESET</span>
+              </button>
+            </div>
           </div>
-          <div class="options game-levels">
-            <label for="level-list">
-              <span class="titles">Levels of sudoku</span>
-            </label>
-            <select class="level-list" name="level-list" id="level-list">
-              <option value="" selected>Click here</option>
-              <option value="18">Easy</option>
-              <option value="27">Normal</option>
-              <option value="40">Hard</option>
-              <option value="54">Very hard</option>
-            </select>
-          </div>
-          <p>Time is counting from the moment of click PLAY button.</p>
-          <div class="options buttons">
-            <button id="play">
-              <span class="click play">PLAY</span>
-            </button>
-            <button type="reset" id="reset">
-              <span class="click reset">RESET</span>
-            </button>
-          </div>
+          <p>Time is counting from the moment of clicking PLAY button.</p>
         </section>
         <section class="sudoku">
           <div class="gamespace"></div>
