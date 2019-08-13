@@ -1,177 +1,188 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SUDOKU</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sudoku game">
-  <meta name="author" content="Krzysztof Sobota">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Exo+2:200,400" rel="stylesheet">  
-</head>
-<body>
-  <div class="container">
-   <header class="main-header">
-      <a href="">
-        <h1>
-          <img src="/sudoku_gameboard(small).svg" width="80" alt="">
-          <span class="game-name">Sudoku</span>
-        </h1>
-      </a>
-    </header>
-    <button class="hide-show" id="savespace">
-      <span>Click to SHOW/HIDE test description</span>
-    </button>
-    <main>
-      <article>
-        <section class="description">
-         <h2>Sudoku game</h2>
-         <p>This game come from Japan and is a mathematical brain teaser. Big square is made from 81 small square fields (9 rows, 9 columns) and it has got two main 9-elements diagonals. Furthermore red lines show additional division by 3x3 squares.</p>
-         <p>The task is filling all the space with digits 1-9 in a such way that in every:</p>
-         <div class="rules">
-           <ul>
-             <li>row,</li>
-             <li>column,</li>
-             <li>main diagonals,</li>
-             <li>3x3 square,</li>
-           </ul>
-           <div class="animations">
-<!--
-             <img src="/row_animation.svg" width="100" alt="9 rows of sudoku">
-             <img src="/column_animation.svg" width="100" alt="9 columns of sudoku">
-             <img src="/diagonals_animation.svg" width="100" alt="2 main diagonals of sudoku">
-             <img src="/squares_animation.svg" width="100" alt="9 smaller squares of sudoku">
--->
-           </div>
-         </div>
-         <span>none of these digits will be repeated.</span>
-         <p>Example of properly filled board game is below - after click "START" button image will disappear and the sudoku game begun. In "Options menu" you can find type of the game (time on/off) and a few difficulty levels. Number of empty cells (squares) on the board depends on chosen level of the game.</p>
-        </section>
-        <section class="panel menu">
-          <h2>Options menu</h2>
-          <div class="options">
-            <div class="time">
-              <span class="option-title">You want to play for:</span>
-              <form action=""
-                autocomplete="off">
-                <div class="click-area">
-                  <input type="radio"
-                    name="gameopt"
-                    id="timeOff">
-                  <label class="gameopt"
-                    for="timeOff">fun only (time is off)</label>
-                </div>
-                <div class="click-area">
-                  <input type="radio"
-                    name="gameopt"
-                    id="timeOn">
-                  <label class="gameopt"
-                    for="timeOn">record (time is on)</label>
-                </div>
-              </form>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>SUDOKU</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Sudoku game"/>
+    <meta name="author" content="Krzysztof Sobota"/>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:200,400" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="container">
+      <header class="main-header">
+        <a href="">
+          <h1>
+            <img src="/sudoku_gameboard(small).svg" width="80" alt=""/>
+            <span class="game-name">Sudoku</span>
+          </h1>
+        </a>
+      </header>
+      <button class="hide-show" id="savespace">
+        <span>Click to HIDE description</span>
+      </button>
+      <main>
+        <article>
+          <section class="description">
+            <h2>~ Sudoku game ~</h2>
+            <p>
+              This game come from Japan and is a mathematical brain teaser. Big
+              square is made from 81 small square fields (9 rows, 9 columns) and
+              it has got two main 9-elements diagonals. Furthermore red lines
+              show additional division by 3x3 squares.
+            </p>
+            <div class="rules">
+              <p>
+                The task is filling all the space with digits 1-9 in a such way
+                that in every:
+              </p>
+              <ul>
+                <li>row,</li>
+                <li>column,</li>
+                <li>main diagonals,</li>
+                <li>3x3 square,</li>
+              </ul>
+              <p>none of these digits will be repeated.</p>
             </div>
-            <div class="game-levels">
-              <label for="level-list">
-                <span class="option-title">Levels of sudoku</span>
-              </label>
-              <select class="level-list"
-                name="level-list"
-                id="level-list">
-                <option value=""
-                  selected>Click here</option>
-                <option value="18">Easy</option>
-                <option value="27">Normal</option>
-                <option value="40">Hard</option>
-                <option value="54">Very hard</option>
-              </select>
+            <img
+              class="explain-image"
+              src="/explaination.svg"
+              width="250"
+              alt="digit filling directions explaination"/>
+            <p>
+              Example of properly filled board game is below - after click
+              "START" button image will disappear and the sudoku game begun. In
+              "Options menu" you can find type of the game (time on/off) and a
+              few difficulty levels. Number of empty cells (squares) on the
+              board depends on chosen level of the game.
+            </p>
+          </section>
+          <section class="panel menu">
+            <h2>Options menu</h2>
+            <div class="options">
+              <div class="game-type">
+                <span class="option-title">You want to play for:</span>
+                <form action="" autocomplete="off">
+                  <div class="click-area">
+                    <input type="radio" name="gameopt" id="timeOff"/>
+                    <label class="gameopt" for="timeOff">fun only (time is off)</label>
+                  </div>
+                  <div class="click-area">
+                    <input type="radio" name="gameopt" id="timeOn"/>
+                    <label class="gameopt" for="timeOn">record (time is on)</label>
+                  </div>
+                </form>
+              </div>
+              <div class="game-levels">
+                <label for="level-list">
+                  <span class="option-title">Levels of sudoku</span>
+                </label>
+                <select class="level-list" name="level-list" id="level-list">
+                  <option value="" selected>Click here</option>
+                  <option value="18">Easy</option>
+                  <option value="27">Normal</option>
+                  <option value="40">Hard</option>
+                  <option value="54">Very hard</option>
+                </select>
+              </div>
+              <div class="buttons">
+                <button id="play">
+                  <span class="click play">PLAY</span>
+                </button>
+                <button type="reset" id="reset">
+                  <span class="click reset">RESET</span>
+                </button>
+              </div>
             </div>
-            <div class="buttons">
-              <button id="play">
-                <span class="click play">PLAY</span>
-              </button>
-              <button type="reset"
-                id="reset">
-                <span class="click reset">RESET</span>
-              </button>
+            <p>Time is counting from the moment of clicking PLAY button.</p>
+          </section>
+          <section class="sudoku">
+            <div class="gamespace"></div>
+          </section>
+          <section class="panel tabels" id="results">
+            <h2>Time and ranking</h2>
+            <div class="two-tabels">
+              <table class="timer">
+                <thead>
+                  <tr>
+                    <th>Your time</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td id="time_now">
+                    <span id="hour">00</span>: <span id="minute">00</span>:
+                    <span id="second">00</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="new-record"></td>
+                </tr>
+              </table>
+              <table class="record">
+                <tr>
+                  <th colspan="2">Ranking table</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+                <tr class="short">
+                  <td>4</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+                <tr class="short">
+                  <td>5</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+                <tr class="short half">
+                  <td>6</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+                <tr class="short half">
+                  <td>7</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+                <tr class="short half">
+                  <td>8</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+                <tr class="short half">
+                  <td>9</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+                <tr class="short half">
+                  <td>10</td>
+                  <td><span class="hour">--</span>: <span class="minute">--</span>:
+                    <span class="second">--</span></td>
+                </tr>
+              </table>
             </div>
-          </div>
-          <p>Time is counting from the moment of clicking PLAY button.</p>
-        </section>
-        <section class="sudoku">
-          <div class="gamespace"></div>
-        </section>
-        <section class="panel tabels" id="results">
-          <h2>Time and ranking</h2>
-          <table class="timer">
-            <thead>
-              <tr>
-                <th>Your time</th>
-              </tr>
-            </thead>            
-            <tr>
-              <td id="time_now">
-                  <span id="hour">00</span>:
-                  <span id="minute">00</span>:
-                  <span id="second">00</span>
-              </td>
-            </tr>
-            <tr>
-              <td id="new_record">NEW RECORD !!!</td>
-            </tr>
-          </table>
-          <table class="record">
-            <tr>
-              <th colspan="2">Ranking table (record)</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td></td>
-            </tr>
-            <tr class="short">
-              <td>4</td>
-              <td></td>
-            </tr>
-            <tr class="short">
-              <td>5</td>
-              <td></td>
-            </tr>
-            <tr class="short half">
-              <td>6</td>
-              <td></td>
-            </tr>
-            <tr class="short half">
-              <td>7</td>
-              <td></td>
-            </tr>
-            <tr class="short half">
-              <td>8</td>
-              <td></td>
-            </tr>
-            <tr class="short half">
-              <td>9</td>
-              <td></td>
-            </tr>
-            <tr class="short half">
-              <td>10</td>
-              <td></td>
-            </tr>
-          </table>
-        </section>
-      </article>
-    </main>
-    <footer>
-      <span>Krzysztof Sobota 2019</span>
-    </footer>
-  </div>
-<script type="text/javascript" src="script.js"></script>
-</body>
+          </section>
+        </article>
+      </main>
+      <footer>
+        <span>Krzysztof Sobota 2019</span>
+      </footer>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
 </html>

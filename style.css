@@ -1,468 +1,566 @@
 html, body {
-	margin: 0;
-	padding: 0;
-	font-size: 12px;
-	background: linear-gradient(0deg, hsl(60, 29%, 55%) 0%, hsl(60, 35%, 51%) 100%);
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  background: linear-gradient(0deg,
+    hsl(60, 29%, 55%) 0%,
+    hsl(60, 35%, 51%) 100%);
 }
 
 * {
-	font-family: 'Exo 2';
-	box-sizing: border-box;
+  font-family: 'Exo 2';
+  box-sizing: border-box;
 }
 
 .container {
-	width: 100%;
-	margin-bottom: 50px;
+  width: 100%;
+  margin-bottom: 50px;
 }
 
 h1, h2 {
-	width: 100%;
-	margin: 5px 0;
-	color: hsl(283, 100%, 20%);
+  display: flex;
+  width: 100%;
+  place-content: center;
+  color: hsl(283, 89%, 18%);
 }
 
 h1 {
-	min-height: 60px;
-	flex-flow: row nowrap;
-	place-content: center;
+  min-height: 60px;
+  flex-flow: row nowrap;
+  margin: 5px 0;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 p {
-	text-indent: 1rem;
-	line-height: 1.5rem;
-	margin: 0.25rem 0;
+  text-indent: 1rem;
+  line-height: 1.6rem;
+  margin: 0.25rem 0;
 }
 
 .main-header {
-	flex: 1 0 100%;
-	height: auto;
-	flex-flow: row nowrap;
-	align-content: center;
-	background-color: hsl(42, 94%, 60%);
+  flex: 1 0 100%;
+  height: 7rem;
+  flex-flow: row nowrap;
+  align-content: center;
+  background-color: hsl(42, 94%, 60%);
 }
 
 .main-header * {
-	display: flex;
+  display: flex;
 }
 
 .main-header > a {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-h1 > img {
-	height: 80px;
-	margin: 0 0.8rem;
+.main-header img {
+  width: 5rem;
+  height: 5rem;
+  align-self: center;
+  margin: 0 0.8rem;
 }
 
 .game-name {
-	font-size: 5.125rem;
+  font-size: 5rem;
 }
 
 .hide-show {
-	width: 100%;
-	height: 3.5rem;
-	place-content: center;
-	border-width: 0;
-	background-color: hsl(330, 79%, 25%);
+  width: 100%;
+  height: 3.5rem;
+  place-content: center;
+  border-width: 0;
+  background-color: hsl(330, 79%, 25%);
 }
 
 .hide-show > span {
-	font-size: 1.6rem;
-	color: hsl(42, 94%, 70%);
+  font-size: 1.6rem;
+  color: hsl(42, 94%, 70%);
 }
 
 .hide-show > span:hover {
-	color: hsl(208, 51%, 83%);
+  color: hsl(207, 40%, 83%);
 }
 
 main, article, .description {
-	display: flex;
-	flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 main {
-	padding: 5px;
-	margin-bottom: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 article {
-	justify-content: center;
+  justify-content: center;
+}
+
+section {
+  margin: 0.7rem 0;
+}
+
+.description {
+  align-self: flex-start;
+  place-content: center;
+}
+
+.description > h2 {
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+}
+
+.explain-image, .rules {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 0 0 100%;
+}
+
+.explain-image {
+  max-width: 300px;
 }
 
 .rules {
-	width: 100%;
-	display: flex;
-	flex-flow: row nowrap;
-	margin: 5px 0;
+  place-content: flex-start;
+  margin: 0.75rem 0;
 }
 
-ul {
-	display: block;
-	padding: 0 1.5rem;
-	margin: 0;
+.rules p, .rules ul {
+  width: 100%;
 }
 
-li {
-	margin: 5px 0;
+.rules ul {
+  display: block;
+  padding: 0 1.5rem;
+}
+
+.rules li {
+  margin: 5px 0;
 }
 
 .panel {
-	flex: 0 1 310px;
-	padding: 10px 0;
-	margin: 15px 0;
-	background-color: hsl(58, 26%, 70%);
+  flex: 0 0 100%;
+  padding: 1rem 0;
+  background-color: hsl(58, 26%, 70%);
 }
 
 .panel > h2 {
-	display: flex;
-	margin: 0;
-	place-content: center;
-	line-height: 2.5rem;
-	background: linear-gradient(to bottom, 
-	hsl(60, 29%, 65%) 0%,hsl(261, 77%, 46%) 35%,
-	hsl(261, 77%, 46%) 65%,hsl(60, 29%, 65%) 100%);	
-	color: hsla(60, 85%, 65%, 0.85);
+  margin: 0 0 0.6rem 0;
+  line-height: 2.5rem;
+  background: linear-gradient(to bottom,
+    hsl(60, 29%, 65%) 0%,
+    hsl(261, 77%, 45%) 35%,
+    hsl(261, 77%, 45%) 65%,
+    hsl(60, 29%, 65%) 100%);
+  color: hsla(60, 88%, 72%, 0.95);
 }
 
-
-			/*** Left panel with game options ***/
+/*** Left panel with game options ***/
 .menu, .options {
-	display: flex;
-	flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
 
-.options > .time {
-	flex: 0 0 auto;
+.options {
+  padding: 0 0.2rem;
+  justify-content: space-around;
 }
 
-.options > .game-levels {
-	flex: 0 0 10.5rem;
+.options > .game-type {
+  flex: 0 0 auto;
 }
 
-.options > .time, .options > .game-levels {
-	margin: 8px 6px;
+/*** Time on/off options ***/
+
+form {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
 }
 
-.options, .menu > p {
-	padding: 0 5px;
-}
-
-.option-title {
-	display: inline-block;
-	line-height: 2rem;
-	padding-left: 0.25rem;
-	margin-bottom: 0.3rem;
-	font-size: 1.25rem;
-	vertical-align: middle;
-	background: linear-gradient(to right, 
-	hsl(61, 65%, 63%) 0%,hsl(61, 60%, 64%) 50%, hsl(59, 32%, 69%) 100%);
-}
-
-	
-/* Buttons */
-.options > .buttons {
-	display: flex;
-	flex: 1 0 auto;
-	justify-content: space-evenly;
-}
-
-.buttons > button {
-	margin: 1rem 0;
-	border: 3px solid hsl(228, 52%, 40%);
-	border-radius: 10px;
-	background: radial-gradient(ellipse at center, rgba(197, 208, 217, 1) 35%, rgba(84, 107, 255, 1) 100%);
-}
-
-.buttons > button:hover {
-	border: 3px solid hsl(228, 52%, 60%);
-	background: radial-gradient(ellipse at center, hsl(207, 82%, 83%) 50%, hsl(232, 100%, 55%) 100%);
-}
-
-.click {
-	display: flex;
-	padding: 3px;
-	font-size: 2.25rem;
-}
-
-.play {
-	color: hsl(149, 59%, 19%);
-}
-
-.reset {
-	color: hsl(354, 70%, 30%);
-}
-
-
-/*** Timer options ***/
-form {	
-	font-size: 1.125rem;
-	line-height: 1.5rem;
-}
-
-input[type=radio] {
-	/* Hide original inputs */
-	visibility: hidden;
-	position: absolute;
+input[type='radio'] {
+  /* Hide original inputs */
+  visibility: hidden;
+  position: absolute;
 }
 
 .click-area {
-	height: 2rem;
+  height: 2rem;
 }
 
-input[type=radio] + label:before {
-	content: " ";
-	display: inline-block;
-	height: 1.25rem;
-	width: 1.25rem;
-	margin: 0 0.5rem 0.25rem 0;
-	vertical-align: middle;
-	border: 1px solid hsl(0, 0%, 30%);
-	border-radius: 50%;
-	cursor: pointer;
+input[type='radio'], .gameopt {  
+  cursor: pointer;
 }
 
-input[type=radio]:checked + label:before {
-	background: hsl(51, 100%, 50%); /* gold */
+input[type='radio'] + label:before {
+  content: ' ';
+  display: inline-block;
+  height: 1.25rem;
+  width: 1.25rem;
+  margin: 0 0.5rem 0.3rem 0.25rem;
+  vertical-align: middle;
+  border: 1px solid hsl(0, 0%, 30%);
+  border-radius: 50%;
+}
+
+input[type='radio']:checked + label:before {
+  background: hsl(51, 100%, 50%); /* gold */
+}
+
+.options > .game-levels {
+  flex: 0 1 10.5rem;
+}
+
+.options > .game-type, .options > .game-levels {
+  margin: 0.6rem 0;
+}
+
+.option-title {
+  display: inline-block;
+  line-height: 2rem;
+  margin-bottom: 0.4rem;
+  font: 600 1.25rem 'Exo 2';
+  vertical-align: middle;
+  color: hsl(251, 86%, 33%);
+}
+
+.level-list {
+  font-size: 1.125rem;
+  
+}
+
+.menu > p {
+  text-align: center;
+  text-indent: 0;  
+  font-size: 1.125rem;
+  color: hsl(241, 74%, 32%);
+  padding: 0 0.6rem;
 }
 
 
-		/*** Game board ***/
+/* Buttons */
+
+.options > .buttons {
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: space-around;
+}
+
+.buttons > button {
+  margin: 1rem 0;
+  border: 3px solid hsl(228, 52%, 40%);
+  border-radius: 10px;
+  background: radial-gradient(ellipse at center,
+    rgba(197, 208, 217, 1) 35%,
+    rgba(84, 107, 255, 1) 100%);
+}
+
+.buttons > button:hover {
+  border: 3px solid hsl(228, 52%, 60%);
+  background: radial-gradient(ellipse at center,
+    hsl(207, 82%, 83%) 50%,
+    hsl(232, 100%, 55%) 100%);
+}
+
+.click {
+  display: flex;
+  width: 6.5rem;
+  height: 3.5rem;
+  font-size: 2.25rem;
+  place-content: center;
+  place-items: center;
+}
+
+button > .play {
+  color: hsl(149, 77%, 20%);
+}
+
+button > .reset {
+  color: hsl(354, 70%, 30%);
+}
+
+
+/*** Game board ***/
 
 .sudoku {
-	display: flex;
-	height: 90vw;
-	width: 90vw;
-	max-height: 500px;
-	max-width: 500px;
+  display: flex;
+  height: 95vw;
+  width: 95vw;
+  max-height: 500px;
+  max-width: 500px;
 }
 
 .gamespace {
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
+  border: 2px solid black;
 }
 
 .gamespace, .squares {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center;
+  display: flex;
+  flex-flow: row wrap;
+  place-content: center;
 }
 
 .squares {
-	height: 10vw;
-	width: 10vw;
-	border: thin solid black;
-	background-color: hsl(58, 25%, 70%);
+  height: calc(100% / 9);
+  width: calc(100% / 9);
+  border: thin solid black;
+  background-color: hsl(58, 25%, 72%);
 }
 
 .squares > span, .digits {
-	font-size: 1.75rem;
+  font-size: 1.75rem;
 }
 
 .squares > span {
-	display: flex;
-	align-self: center;
+  align-self: center;
 }
 
 .digits {
-	width: 100%;
-	height: 100%;
-	border: 0;
-	text-align: center;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  text-align: center;
 }
 
 .digits:focus, .digits:hover {
-	background-color: aquamarine;
+  background-color: aquamarine;
 }
-
 
 /*** Tabels panel ***/
 
+.two-tabels {
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-start;
+}
+
 table {
-	max-width: 200px; 
-	width: 80%;
-	margin: 15px auto;
-	border-collapse: collapse;
-	border-spacing: 0;
-	font-size: 1.4rem;
+  width: 11.5rem;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 1.45rem;
 }
 
 .timer, .record {
-	text-align: center;
-	border: 1px solid black;
-	background-color: hsla(61, 56%, 48%, 0.75);
-}
-
-.level-list, th, td, option {
-	font-size: 1.25rem;
+  text-align: center;
+  border: 1px solid black;
+  background-color: hsla(61, 56%, 48%, 0.75);
 }
 
 th {
-	padding: 5px;
+  padding: 0.5rem;
 }
 
 td {
-	background-color: hsl(46, 23%, 82%);
-	border: 1px solid black;
+  background-color: hsl(46, 23%, 82%);
+  border: 1px solid black;
 }
 
 .record td:first-child {
-	width: 15%;
-	padding-right: 0.25rem;
-	text-align: right;
+  width: 2rem;
+  padding-right: 0.25rem;
+  text-align: right;
 }
 
+#new-record {
+  display: none;
+  height: 3.9rem;
+  color: brown;
+}
+
+/** Footer **/
+
 footer {
-	position: fixed;
-	height: 4.5rem;
-	width: 100%;
-	bottom: 0;
-	left: 0;
-	font-size: 1.25rem;
-	color: rgb(239, 245, 244);
-	background-color: hsl(49, 28%, 35%);
+  position: fixed;
+  height: 4.5rem;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  font: 600 1.3rem 'Exo 2';
+  color: hsl(283, 89%, 18%);
+  background-color: hsl(42, 94%, 60%);
 }
 
 footer > span {
-	display: block;
-	padding: 5px;
-	font-style: italic;
+  display: block;
+  padding: 0.5rem;
+  font-style: italic;
 }
 
-@media screen and (min-width: 320px) and (max-width: 360px) {
-	.hide-show > span {
-		font-size: 1.4rem;
-	}
+@media screen and (min-width: 320px) and (max-width: 420px) {
+  .short {
+    display: none;
+  }
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {	
-	.short {
-		display: none;
-	}
+@media screen and (min-width: 420px) {
+  .menu {
+    align-content: flex-start;
+  }
+  
+  .options {
+    padding: 0 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .options > .buttons {
+    margin: 1rem 0;
+  }
+
+  .buttons > button {
+    height: 55px;
+  }
+    
+  .options > .buttons, .two-tabels {
+    flex-flow: column wrap;
+    place-content: center;
+  }
+
+  .timer, .record {
+    margin: 1rem 0 0 0;
+  }
 }
 
-@media screen and (min-width: 480px) and (max-width: 540px) {
-	.menu {
-		flex: 1 0 50%;
-	}
-		
-	.tabels {
-		flex: 0 0 220px;
-	}	
+@media screen and (min-width: 420px) and (max-width: 540px) {
+  main {
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 540px) {
+  main {
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 420px) and (max-width: 720px) {
+  body, html {
+    font-size: 14px;
+  }
+
+  .panel {
+    flex: 1;
+  }
+
+  .options > .game-type, .options > .game-levels {
+    flex-flow: row wrap;
+    flex: 0 0 60%;
+  }
+  
+  .menu {
+    border-right: thin solid hsl(43, 80%, 32%);
+    order: 2;
+  }
+
+  .tabels {
+    order: 3;
+  }
+
+  .sudoku {
+    order: 4;
+  }
+
+  .half {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 540px) and (max-width: 720px) {
-	.panel {
-		flex: 0 0 260px;
-		align-content: flex-start;
-	}	
-}
-
-@media screen and (min-width: 480px) and (max-width: 719px) {
-	body, html {
-		font-size: 14px;
-	}
-
-	main {
-		padding: 10px;
-	}
-
-	.menu {
-		align-content: flex-start;
-		border-right: thin solid hsl(43, 80%, 32%);
-		order: 2;
-	}
-
-	.tabels {
-		order: 3;
-	}
-	
-	.sudoku {
-		order: 4;
-	}
-
-	.half {
-		display: none;
-	}
+  .options > .buttons {
+    flex-flow: row nowrap;
+    justify-content: space-around;
+  }
 }
 
 @media screen and (min-width: 720px) {
-	html,	body {
-		font-size: 16px;
-	}
+  html, body {
+    font-size: 16px;
+  }
+  
+  .menu {
+    order: 2;
+  }
 
-	main {
-		padding: 15px;
-	}
-	
-	article {
-		justify-content: space-evenly;
-	}	
-	
-	.sudoku {
-		margin: 0 auto;
-		align-self: center;
-	}
-	
-	.squares {
-		height: calc(100% / 9);
-		width: calc(100% / 9);
-	}
+  .sudoku {
+    align-self: center;
+    order: 3;
+  }
 
-	.buttons {
-		flex-flow: column wrap;
-		place-content: center;
-		align-self: center;
-		align-items: center;
-		margin: 15px 0;
-	}
-
-	.buttons > button {
-		margin: 15px 0;
-	}
+  .tabels {
+    order: 4;
+  }
 }
 
 @media screen and (min-width: 720px) and (max-width: 960px) {
-	article {
-		justify-content: flex-start;
-		align-content: stretch;
-		align-items: stretch;
-	}
-	
-	.description {
-		flex: 1 0 60%;
-		margin: 0 25px 25px 0;
-	}
-	
-	.menu {
-		margin: 10px 0 25px 0;
-	}
-	
-	.panel {
-		flex: 0 0 225px;
-	}
-	
-	.sudoku {
-		height: 60vw;
-		width: 60vw;
-	}
+  article {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .description {
+    flex: 1 0 60%;
+  }
+
+  .panel {
+    flex: 0 0 225px;
+    margin-left: 25px;
+  }
+
+  .sudoku {
+    /* flex: 1 0 60%; */
+    width: 60vw;
+    height: 60vw;
+  }
 }
 
 @media screen and (min-width: 960px) {
-	.description {
-		flex: 0 0 100%;
-	}
-	
-	.panel {
-		flex: 0 0 220px;
-	}
-	
-	.sudoku {
-		height: 50vw;
-		width: 50vw;
-	}
+  article {
+    justify-content: space-between;
+  }
+
+  .description {
+    flex: 0 0 100%;
+  }
+
+  .panel {
+    flex: 0 0 220px;
+  }
+
+  .sudoku {
+    max-width: 470px;
+    max-height: 470px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  html, body {
+    font-size: 17.5px;
+  }
+  
+  .container {
+    width: 1280px;
+    margin: 0 auto;
+  }
+  
+  main {
+    margin-bottom: 60px;
+  }
+  
+  .panel {
+    flex: 0 0 300px;
+  }
+
+  .options > .buttons {
+    flex-flow: row nowrap;
+    justify-content: space-around;
+  }
+
+  .sudoku {
+    max-width: 580px;
+    max-height: 580px;
+  }
 }
