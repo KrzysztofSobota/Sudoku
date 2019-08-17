@@ -46,11 +46,8 @@
               </ul>
               <p>none of these digits will be repeated.</p>
             </div>
-            <img
-              class="explain-image"
-              src="/explaination.svg"
-              width="250"
-              alt="digit filling directions explaination"/>
+            <!-- <img class="explain-image" src="/explaination.svg" width="250"
+              alt="digit filling directions explaination"/> -->
             <p>
               Example of properly filled board game is below - after click
               "START" button image will disappear and the sudoku game begun. In
@@ -65,12 +62,12 @@
               <div class="game-type">
                 <span class="option-title">You want to play for:</span>
                 <form action="" autocomplete="off">
-                  <div class="click-area">
-                    <input type="radio" name="gameopt" id="timeOff"/>
+                  <div class="click-area" id="opt1">
+                    <input type="checkbox" name="gameopt" id="timeOff"/>
                     <label class="gameopt" for="timeOff">fun only (time is off)</label>
                   </div>
-                  <div class="click-area">
-                    <input type="radio" name="gameopt" id="timeOn"/>
+                  <div class="click-area" id="opt2">
+                    <input type="checkbox" name="gameopt" id="timeOn"/>
                     <label class="gameopt" for="timeOn">record (time is on)</label>
                   </div>
                 </form>
@@ -99,7 +96,7 @@
             <p>Time is counting from the moment of clicking PLAY button.</p>
           </section>
           <section class="sudoku">
-            <div class="gamespace"></div>
+            <div class="gamespace example"></div>
           </section>
           <section class="panel tabels" id="results">
             <h2>Time and ranking</h2>
