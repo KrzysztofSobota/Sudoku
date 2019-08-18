@@ -1,5 +1,5 @@
 'use strict';
-window.addEventListener('DOMContentLoaded', Gameboard);
+// window.addEventListener('DOMContentLoaded', Gameboard);
 
 /* Fill gameboard with 81 (9x9) small squares */
 function Gameboard() {
@@ -7,32 +7,32 @@ function Gameboard() {
   for (let j = 0; j <= 80; j++) {
     game.insertAdjacentHTML('afterbegin',`<div class="squares" id="num${80 - j}"><span class="num"></span></div>`);
   }
+  
+  let square = document.querySelectorAll('.squares');
+  
+  /* 4 red lines divide board into 9 squares */
+  function redLines() {  
+    const lineStyle = '2px solid red';
+
+    for (let i = 2; i <= 81; i += 9) {
+      square[i].style.borderRight = lineStyle;
+      square[i + 1].style.borderLeft = lineStyle;
+      square[i + 3].style.borderRight = lineStyle;
+      square[i + 4].style.borderLeft = lineStyle;
+    }
+
+    for (let i = 18; i <= 26; i++) {
+      square[i].style.borderBottom = lineStyle;
+      square[i + 9].style.borderTop = lineStyle;
+      square[i + 27].style.borderBottom = lineStyle;
+      square[i + 36].style.borderTop = lineStyle;
+    }
+  }
+  
+  redLines();
 }
 
-const square = document.querySelectorAll('.squares');
-
-/* 4 red lines divide board into 9 squares */
-function redLines() {
-  const lineStyle = '2px solid red';
-
-  for (let i = 2; i <= 81; i += 9) {
-    square[i].style.borderRight = lineStyle;
-    square[i + 1].style.borderLeft = lineStyle;
-    square[i + 3].style.borderRight = lineStyle;
-    square[i + 4].style.borderLeft = lineStyle;
-  }
-
-  for (let i = 18; i <= 26; i++) {
-    square[i].style.borderBottom = lineStyle;
-    square[i + 9].style.borderTop = lineStyle;
-    square[i + 27].style.borderBottom = lineStyle;
-    square[i + 36].style.borderTop = lineStyle;
-  }
-}
-
-redLines();
-
-
+let area = Gameboard();
 
 /**** Sudoku starts only when type and level of game are checked ****/
 
@@ -53,13 +53,10 @@ listGroup.addEventListener('change', selectedValues);
 btnStart.addEventListener('click', toggleTimer, { once: true });
 btnReset.addEventListener('click', toggleTimer);
 
+
 let fun = document.querySelector('#timeOff');
 let record = document.querySelector('#timeOn');
 
-
- if (n > 0) {
-   console.log('OK');
-}
 
 function toggleTimer(event) {
   let btn = event.target.id;
@@ -184,13 +181,12 @@ function Gamedigits() {
 
 
 /* STEP 4: Fill the board with the digits */
+let sudoku = Gamedigits();
 
-/* Taking index numbers - it is n-indexes loop, where 'n' depends on game level */
 let uniqueIndexesArray = [];
 let indexNumbers = [];
 
-let sudoku = Gamedigits();
-let indexArray = Array.from(sudoku); // copy of 'fullArray' to make the operations on it
+let indexArray = Array.from(sudoku); // copy of 'sudoku' to make the operations on it
 
 function cleanedArray(n) {
   let tempArray = [];
@@ -209,10 +205,10 @@ function cleanedArray(n) {
 }
 
 let smallArray = cleanedArray(n);
-console.log(smallArray);
 
 /* Inserting white/empty area to input digits into the board */
 let noRepeatIndexes = Array.from(smallArray.values());
+let square = document.querySelectorAll('.squares');
 
 function fill() {
   for (let i = 0; i < n; i++) {
@@ -221,11 +217,12 @@ function fill() {
   }
 }
 
+fill();
+
 /* Board is filled with digits and some of them are already covered beyond the user sight */
-let cellDigits = document.querySelectorAll('.squares > span'); // define space to put 81 digits
 
 function fillBoard() {
-  fill();
+  let cellDigits = document.querySelectorAll('.squares > span'); // define space to put 81 digits
 
   for (let i = 0; i < indexArray.length; i++) {
     cellDigits[i].innerHTML = `${indexArray[i]}`;
@@ -234,18 +231,20 @@ function fillBoard() {
 
 fillBoard();
 
+
+
 const getNumber = str => Number(str.match(/\d+/)[0]);
 const num = event => getNumber(event.target.id);
 
-game.addEventListener('click', compareDigit);
+document.querySelector('.gamespace').addEventListener('click', compareDigit);
 
-/* Checking if the entered digit matches the digit in the same index position in the fullArray */
+/* Checking if the entered digit matches the digit in the same index position in the sudoku */
 
 function compareDigit(event) {
   let digit = num(event);
   let digitSquare = document.querySelector(`#${event.target.id}`);
   let enteredValue = digitSquare.value;
-  let arrayDigit = fullArray[digit];
+  let arrayDigit = sudoku[digit];
 
   /* Input area displays blue/red color after good/bad answer respectively */
   if (digitSquare != null && enteredValue != '' && arrayDigit != '') {
@@ -269,7 +268,7 @@ function compareDigit(event) {
 function GameEnd() {
     /* Clear: array, all game options */
     indexArray.forEach(el => {
-      el.textContent = '';
+      el.style.textContent = '';
     });
     
     optionsClear();
