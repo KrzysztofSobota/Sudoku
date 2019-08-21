@@ -296,16 +296,8 @@ button > .reset {
   height: 100%;
   width: 100%;
   border: 2px solid black;
-  z-index: 0;
-}
-
-.gamespace {
-}
-
-.example {
   background: url(/example-mini.svg) no-repeat;
   background-size: cover;
-  z-index: 1;
 }
 
 .gamespace, .squares {
@@ -393,7 +385,6 @@ footer {
   font: 600 1.3rem 'Exo 2';
   color: hsl(283, 89%, 18%);
   background-color: hsl(42, 94%, 60%);
-  z-index: 2;
 }
 
 footer > span {
